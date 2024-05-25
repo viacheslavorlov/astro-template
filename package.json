@@ -1,0 +1,29 @@
+{
+  "name": "astro-template",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "node ./dist/sever/entry.mjs",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/node": "^8.2.5",
+    "@astrojs/preact": "^3.3.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.9.1",
+    "astro-compress": "^2.2.25",
+    "astro-seo": "^0.8.3",
+    "clsx": "^2.1.1",
+    "nodemailer": "^6.9.13",
+    "preact": "^10.22.0",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13"
+  }
+}

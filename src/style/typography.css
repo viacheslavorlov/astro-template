@@ -1,0 +1,100 @@
+/* 
+Тут необходимо настроить шрифты и их размер
+*/
+/* @font-face {
+	font-family: 'SF UI Text';
+	src: url('/fonts/sfuidisplay_bold.ttf') format('truetype'),
+		url('/fonts/sfuidisplay_heavy.ttf') format('truetype');
+	font-display: swap;
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('/fonts/roboto.woff2') format('woff2'),
+		url('/fonts/roboto.woff') format('woff'),
+		url('/fonts/roboto.ttf') format('truetype'),
+} */
+
+/* Базовые размеры шрифтов */
+/* Маленькие экраны по умолчанию */
+.t-xs {
+  font-size: 15px;
+}
+.t-s {
+  font-size: 18px;
+}
+.t-m {
+  font-size: 20px;
+}
+.t-l {
+  font-size: 33px;
+}
+.t-xl {
+  font-size: 70px;
+  line-height: 98px;
+}
+
+/* Очень маленькие экраны */
+
+@media (min-width: 420px) {
+  .t-xl {
+    font-size: 100px;
+    line-height: 120px;
+  }
+}
+
+@media (min-width: 540px) {
+  .t-xl {
+    font-size: 100px;
+    line-height: 120px;
+  }
+}
+
+/* Средние экраны */
+@media (min-width: 768px) {
+  .t-xs {
+    font-size: 15px;
+  }
+  .t-s {
+    font-size: 20px;
+  }
+  .t-m {
+    font-size: 23px;
+  }
+  .t-l {
+    font-size: 42px;
+  }
+  .t-xl {
+    font-size: 125px;
+    line-height: 145px;
+  }
+}
+
+/* Большие экраны */
+@media (min-width: 1024px) {
+  .t-xs {
+    font-size: 15px;
+  }
+  .t-s {
+    font-size: 25px;
+  }
+  .t-m {
+    font-size: 30px;
+  }
+  .t-l {
+    font-size: 55px;
+  }
+  .t-xl {
+    font-size: 145px;
+    line-height: 160px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .t-xl {
+    font-size: 177px;
+    line-height: 180px;
+  }
+}

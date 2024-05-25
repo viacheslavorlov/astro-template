@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { clsx } from "clsx";
+interface Props extends HTMLAttributes<"section"> {
+  className?: string;
+  id?: string | undefined;
+}
+
+const { className, id, ...props } = Astro.props;
+---
+
+<section
+  id={id}
+  class={clsx("w-full py-6 md:py-10 lg:py-14", className)}
+  {...props}
+>
+  <slot />
+</section>
