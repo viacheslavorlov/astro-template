@@ -1,18 +1,13 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-import { clsx } from 'clsx';
+import type { HTMLAttributes } from "astro/types";
+import { clsx } from "clsx";
 
-interface Props extends HTMLAttributes<'input'> {
-	className?: string;
+interface Props extends HTMLAttributes<"input"> {
+  className?: string;
 }
 
 const { className, ...props } = Astro.props;
+// SET TAILWIND CLASSES INTO CLSX
 ---
 
-<input
-	class={clsx(
-		'px-5 py-4 rounded-full border bg-[#686868] border-accent w-full text-accent t-[20px] font-bold',
-		className
-	)}
-	{...props}
-/>
+<input class={clsx("", className)} {...props} />

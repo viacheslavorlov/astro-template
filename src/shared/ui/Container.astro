@@ -4,14 +4,44 @@ import clsx from "clsx";
 
 interface Props extends HTMLAttributes<"div"> {
   className?: string;
+  paddings?: [number, number, number];
+  maxWidth?: number;
 }
 
-const { className, ...props } = Astro.props;
+const {
+  className,
+  paddings = [6, 10, 14],
+  maxWidth = 1280,
+  ...props
+} = Astro.props;
 ---
 
-<div
-  class={clsx("mx-auto px-6 md:px-8 lg:px-12 w-full max-w-[1280px]", className)}
-  {...props}
->
+<div class={clsx("mx-auto  w-full", "custom-container", className)} {...props}>
   <slot />
 </div>
+<style
+  define:vars={{
+    // tailwind-like paddings
+    p0: paddings[0] * 4 + "px",
+    p1: paddings[1] * 4 + "px",
+    p2: paddings[2] * 4 + "px",
+    maxW: maxWidth + "px",
+  }}
+>
+  .custom-container {
+    max-width: var(--maxW);
+    padding: 0 var(--p0);
+  }
+
+  @media screen and (min-width: 768px) {
+    .custom-container {
+      padding: 0 var(--p1);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .custom-container {
+      padding: 0 var(--p2);
+    }
+  }
+</style>
