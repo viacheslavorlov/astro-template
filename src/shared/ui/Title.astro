@@ -19,50 +19,11 @@ const { className, bold = true, align = 'left', elementAlign = 'left', full, h, 
 ---
 
 {
-	h == '3xl' && (
+	h == 'xl' && (
 		<h2
 			class={clsx(
 				'',
 				bold && 'font-bold',
-				h === '3xl' && 't-3xl',
-				elementAlign === 'left'
-					? 'mr-auto'
-					: elementAlign === 'right'
-						? 'ml-auto'
-						: 'mx-auto',
-				full && 'w-full',
-				className
-			)}
-			{...props}>
-			<slot />
-		</h2>
-	)
-}
-{
-	h == '2xl' && (
-		<h2
-			class={clsx(
-				'text',
-				h === '2xl' && 't-2xl',
-				elementAlign === 'left'
-					? 'mr-auto'
-					: elementAlign === 'right'
-						? 'ml-auto'
-						: 'mx-auto',
-				full && 'w-full',
-
-				className
-			)}
-			{...props}>
-			<slot />
-		</h2>
-	)
-}
-{
-	h == 'xl' && (
-		<h3
-			class={clsx(
-				'text',
 				h === 'xl' && 't-xl',
 				elementAlign === 'left'
 					? 'mr-auto'
@@ -74,13 +35,12 @@ const { className, bold = true, align = 'left', elementAlign = 'left', full, h, 
 			)}
 			{...props}>
 			<slot />
-		</h3>
+		</h2>
 	)
 }
-
 {
 	h == 'l' && (
-		<h3
+		<h2
 			class={clsx(
 				'text',
 				h === 'l' && 't-l',
@@ -90,11 +50,12 @@ const { className, bold = true, align = 'left', elementAlign = 'left', full, h, 
 						? 'ml-auto'
 						: 'mx-auto',
 				full && 'w-full',
+
 				className
 			)}
 			{...props}>
 			<slot />
-		</h3>
+		</h2>
 	)
 }
 {
@@ -102,7 +63,7 @@ const { className, bold = true, align = 'left', elementAlign = 'left', full, h, 
 		<h3
 			class={clsx(
 				'text',
-				h === 'm' && 't-m',
+				h === 'm' && 't-xl',
 				elementAlign === 'left'
 					? 'mr-auto'
 					: elementAlign === 'right'
@@ -116,6 +77,7 @@ const { className, bold = true, align = 'left', elementAlign = 'left', full, h, 
 		</h3>
 	)
 }
+
 
 <style define:vars={{ align }}>
 	.text {

@@ -1,15 +1,23 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Container from "../shared/ui/Container.astro";
-import Section from "../shared/ui/Section.astro";
-
+import Layout from '../layouts/Layout.astro';
+import Container from '../shared/ui/Container.astro';
+import Section from '../shared/ui/Section.astro';
+import Title from '../shared/ui/Title.astro';
+import Text from '../shared/ui/Text.astro';
+import Input from '../shared/ui/Input.astro';
+import Card from '../shared/ui/Card.astro';
+import Button from '../shared/ui/Button.astro';
 ---
 
-<Layout title="Welcome to Astro." description="">
-  <main>
-    <!-- контент страницы -->
-    <Section>
-      <Container> Clean template </Container>
-    </Section>
-  </main>
+<Layout
+	title='Welcome to Astro.'
+	description=''>
+	<main>
+		<!-- контент страницы -->
+		<Section>
+			<Container>
+				<Title h='xl'> Чистый шаблон </Title>
+			</Container>
+		</Section>
+	</main>
 </Layout>

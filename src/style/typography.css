@@ -1,3 +1,4 @@
+
 /* 
 Тут необходимо настроить шрифты и их размер
 */
@@ -32,16 +33,16 @@
   font-size: 33px;
 }
 .t-xl {
-  font-size: 70px;
-  line-height: 98px;
+  font-size: 50px;
+  line-height: 68px;
 }
 
 /* Очень маленькие экраны */
-
+/* 
 @media (min-width: 420px) {
   .t-xl {
-    font-size: 100px;
-    line-height: 120px;
+    font-size: 5px;
+    line-height: 74px;
   }
 }
 
@@ -50,7 +51,7 @@
     font-size: 100px;
     line-height: 120px;
   }
-}
+} */
 
 /* Средние экраны */
 @media (min-width: 768px) {
@@ -67,8 +68,8 @@
     font-size: 42px;
   }
   .t-xl {
-    font-size: 125px;
-    line-height: 145px;
+    font-size: 55px;
+    line-height: 75px;
   }
 }
 
@@ -87,14 +88,14 @@
     font-size: 55px;
   }
   .t-xl {
-    font-size: 145px;
-    line-height: 160px;
+    font-size: 60px;
+    line-height: 80px;
   }
 }
 
 @media (min-width: 1280px) {
   .t-xl {
-    font-size: 177px;
-    line-height: 180px;
+    font-size: 65px;
+    line-height: 85px;
   }
 }
