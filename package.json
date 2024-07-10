@@ -1,7 +1,7 @@
 {
   "name": "astro-template",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
     "start": "node ./dist/sever/entry.mjs",
@@ -10,13 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
-    "@astrojs/mdx": "^3.0.1",
-    "@astrojs/node": "^8.2.5",
-    "@astrojs/preact": "^3.3.0",
-    "@astrojs/sitemap": "^3.1.5",
+    "@astrojs/check": "^0.8.0",
+    "@astrojs/mdx": "^3.1.2",
+    "@astrojs/node": "^8.3.2",
+    "@astrojs/preact": "^3.5.0",
+    "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.9.1",
+    "astro": "^4.11.5",
     "astro-compress": "^2.2.25",
     "astro-seo": "^0.8.3",
     "clsx": "^2.1.1",

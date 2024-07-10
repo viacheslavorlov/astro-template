@@ -1,0 +1,124 @@
+---
+// Должен использоваться со специфическим файлом typography.css
+// в котором прописаны стили t-xs, t-s, t-m, t-l, t-xl, t-2xl, t-3xl
+
+import type { HTMLAttributes } from 'astro/types';
+import clsx from 'clsx';
+import type { Align, ElementAlign, H } from '../types';
+
+interface Props extends HTMLAttributes<'h1' | 'h2' | 'h3' | 'h4'> {
+	h: H;
+	className?: string;
+	align?: Align;
+	elementAlign?: ElementAlign;
+	full?: boolean;
+	bold?: boolean;
+}
+
+const { className, bold = true, align = 'left', elementAlign = 'left', full, h, ...props } = Astro.props;
+---
+
+{
+	h == '3xl' && (
+		<h2
+			class={clsx(
+				'',
+				bold && 'font-bold',
+				h === '3xl' && 't-3xl',
+				elementAlign === 'left'
+					? 'mr-auto'
+					: elementAlign === 'right'
+						? 'ml-auto'
+						: 'mx-auto',
+				full && 'w-full',
+				className
+			)}
+			{...props}>
+			<slot />
+		</h2>
+	)
+}
+{
+	h == '2xl' && (
+		<h2
+			class={clsx(
+				'text',
+				h === '2xl' && 't-2xl',
+				elementAlign === 'left'
+					? 'mr-auto'
+					: elementAlign === 'right'
+						? 'ml-auto'
+						: 'mx-auto',
+				full && 'w-full',
+
+				className
+			)}
+			{...props}>
+			<slot />
+		</h2>
+	)
+}
+{
+	h == 'xl' && (
+		<h3
+			class={clsx(
+				'text',
+				h === 'xl' && 't-xl',
+				elementAlign === 'left'
+					? 'mr-auto'
+					: elementAlign === 'right'
+						? 'ml-auto'
+						: 'mx-auto',
+				full && 'w-full',
+				className
+			)}
+			{...props}>
+			<slot />
+		</h3>
+	)
+}
+
+{
+	h == 'l' && (
+		<h3
+			class={clsx(
+				'text',
+				h === 'l' && 't-l',
+				elementAlign === 'left'
+					? 'mr-auto'
+					: elementAlign === 'right'
+						? 'ml-auto'
+						: 'mx-auto',
+				full && 'w-full',
+				className
+			)}
+			{...props}>
+			<slot />
+		</h3>
+	)
+}
+{
+	h == 'm' && (
+		<h3
+			class={clsx(
+				'text',
+				h === 'm' && 't-m',
+				elementAlign === 'left'
+					? 'mr-auto'
+					: elementAlign === 'right'
+						? 'ml-auto'
+						: 'mx-auto',
+				full && 'w-full',
+				className
+			)}
+			{...props}>
+			<slot />
+		</h3>
+	)
+}
+
+<style define:vars={{ align }}>
+	.text {
+		text-align: var(--align);
+	}
+</style>
