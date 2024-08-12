@@ -8,7 +8,7 @@
 │   └── favicon.svg
 ├── src/
 │   ├── shared/
-        ├── ui/ 
+        ├── ui/
         │
 │   │   └── lib/
 │   ├── layouts/
@@ -36,15 +36,15 @@
 
 ## Команды
 
-| Command                   | Action                                                         |
-| :------------------------ | :-----------------------------------------------               |
-| `npm install`             | Установка зависимости.                                         |
-| `npm run dev`             | Запускает локальный сервер в режиме разработки `localhost:4321`|
-| `npm run build`           | Сборка проекта.  `./dist/`                                     |
-| `npm run start`           | Запускает cобранный  проект, в режиме SSR                      |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check`               |
-| `npm run astro -- --help` | Get help using the Astro CLI                                   |
+| Command                   | Action                                                          |
+| :------------------------ | :-------------------------------------------------------------- |
+| `npm install`             | Установка зависимости.                                          |
+| `npm run dev`             | Запускает локальный сервер в режиме разработки `localhost:4321` |
+| `npm run build`           | Сборка проекта. `./dist/`                                       |
+| `npm run start`           | Запускает cобранный проект, в режиме SSR                        |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check`                |
+| `npm run astro -- --help` | Get help using the Astro CLI                                    |
 
-## Документация  Astro
+## Документация Astro
 
 [Официальный сайт.](https://docs.astro.build) [Дискортс сервер](https://astro.build/chat).

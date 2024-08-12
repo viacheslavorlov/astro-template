@@ -1,6 +1,6 @@
 ---
 import { SEO } from "astro-seo";
-import '../style/global.css'
+import "../style/global.css";
 
 interface Props {
   title: string;
@@ -40,7 +40,7 @@ if (typeof keywords !== "string" && typeof keywords !== "undefined") {
       }}
       extend={{
         // extending the default link tags
-        link: [{ rel: "icon", href: "/favicon.ico" }],
+        link: [{ rel: "icon", href: "/favicon.ico" }], // TODO favicon extension
         // extending the default meta tags
 
         meta: [{ name: "keywords", content: (kWords as string) || undefined }],

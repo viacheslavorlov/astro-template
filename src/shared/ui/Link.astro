@@ -1,22 +1,23 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-import clsx from 'clsx';
+import type { HTMLAttributes } from "astro/types";
+import clsx from "clsx";
 
-interface Props extends HTMLAttributes<'a'> {
-	className?: string;
+interface Props extends HTMLAttributes<"a"> {
+  className?: string;
 }
 
-const { className, target = '_blank', ...props } = Astro.props;
+const { className, target = "_blank", ...props } = Astro.props;
 ---
 
 <!-- <div class='flex'> -->
 <a
-	target={target}
-	class={clsx(
-		'', //TODO base style here
-		className
-	)}
-	{...props}>
-	<slot />
+  target={target}
+  class={clsx(
+    "", //TODO base style here
+    className,
+  )}
+  {...props}
+>
+  <slot />
 </a>
 <!-- </div> -->
