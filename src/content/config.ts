@@ -4,9 +4,6 @@ const baseInfo = defineCollection({
   // Type-check frontmatter using a schema
   type: "content",
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    favicon: z.string(),
     phone: z.string().optional(),
     address: z.string().optional(),
     vk: z.string().optional(),
@@ -23,4 +20,26 @@ const baseInfo = defineCollection({
   }),
 });
 
-export const collections = { baseInfo };
+const seo = defineCollection({
+  // Type-check frontmatter using a schema
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    favicon: z.string(),
+
+  }),
+});
+
+const metrika = defineCollection({
+  type: "content",
+  schema: z.object({
+    counter: z.number(),
+    clickmap: z.boolean(),
+    trackLinks: z.boolean(),
+    accurateTrackBounce: z.boolean(),
+    webvisor: z.boolean(),
+  }),
+})
+
+export const collections = { baseInfo, seo, metrika };

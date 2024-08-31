@@ -1,0 +1,11 @@
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+node_modules
+build
+dist
+.git
+.vscode
+.astro
+public

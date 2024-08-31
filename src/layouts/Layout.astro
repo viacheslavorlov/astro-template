@@ -1,5 +1,7 @@
 ---
-import { SEO } from "astro-seo";
+import { getEntry } from "astro:content";
+import YandexMetrika from "../shared/metrika/YandexMetrika.astro";
+import Seo from "../shared/seo/Seo.astro";
 import "../style/global.css";
 
 interface Props {
@@ -9,43 +11,15 @@ interface Props {
   image?: string;
 }
 
-const { title, description, keywords } = Astro.props;
-let kWords: string | string[] | undefined = keywords;
-
-if (typeof keywords !== "string" && typeof keywords !== "undefined") {
-  kWords = keywords.join(", ");
-}
+const { data } = await getEntry("seo", "base");
 ---
 
 <!doctype html>
 <html lang="ru">
   <head>
     <meta name="viewport" content="width=device-width" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="generator" content={Astro.generator} />
-    <SEO
-      charset="UTF-8"
-      title={title}
-      description={description}
-      openGraph={{
-        basic: {
-          title: title,
-          type: "website",
-          image: "",
-          url: Astro.url.href,
-        },
-        optional: {
-          description: description,
-        },
-      }}
-      extend={{
-        // extending the default link tags
-        link: [{ rel: "icon", href: "/favicon.ico" }], // TODO favicon extension
-        // extending the default meta tags
-
-        meta: [{ name: "keywords", content: (kWords as string) || undefined }],
-      }}
-    />
+    <Seo {...data} />
   </head>
   <body>
     <slot />
@@ -53,5 +27,6 @@ if (typeof keywords !== "string" && typeof keywords !== "undefined") {
       /*   Подключаем шрифты тут  */
     </style>
     <!-- Подключаем метрику тут -->
+    <YandexMetrika />
   </body>
 </html>

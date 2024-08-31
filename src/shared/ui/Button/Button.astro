@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import clsx from "clsx";
-import type { Variant } from "../types";
+import type { Variant } from "../../types";
 
 interface Props extends HTMLAttributes<"button"> {
   variant?: "round" | "regular" | "rounded";
@@ -32,7 +32,7 @@ const {
         ? "rounded-md"
         : "rounded-full",
     "",
-    className,
+    className
   )}
   {...props}
 >
