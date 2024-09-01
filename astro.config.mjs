@@ -14,7 +14,13 @@ export default defineConfig({
     checkOrigin: true,
   },
   site: "http://astro-template.ru", // TODO
-  integrations: [tailwind(), /* preact(), */react(), mdx(), sitemap(), compress()],
+  integrations: [
+    tailwind(),
+    /* preact(), */ react(),
+    mdx(),
+    sitemap(),
+    compress(),
+  ],
   adapter: node({
     mode: "standalone", //todo
   }),

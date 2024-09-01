@@ -3,6 +3,7 @@ import { getEntry } from "astro:content";
 import YandexMetrika from "../shared/metrika/YandexMetrika.astro";
 import Seo from "../shared/seo/Seo.astro";
 import "../style/global.css";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -19,7 +20,8 @@ const { data } = await getEntry("seo", "base");
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <Seo {...data} />
+    <Seo ogImage={data.favicon} {...data} />
+    <ViewTransitions />
   </head>
   <body>
     <slot />
