@@ -7,4 +7,4 @@ import Container from "./Container.astro";
 import Card from "./Card.astro";
 import Link from "./Link.astro";
 
-export { Button, Input, Title, Text, Section, Container, Card, Link }
+export { Button, Input, Title, Text, Section, Container, Card, Link };

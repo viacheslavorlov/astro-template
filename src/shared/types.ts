@@ -5,6 +5,6 @@ export type Size = "small" | "big";
 export type H = "xl" | "l" | "m";
 
 export type MenuItem = {
-	title: string;
-	href: string;
-}
+  title: string;
+  href: string;
+};

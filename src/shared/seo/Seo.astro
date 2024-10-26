@@ -26,7 +26,7 @@ const {
 const baseUrl = Astro.site ?? Astro.url;
 const defaultCanonicalUrl = new URL(
   Astro.url.pathname + Astro.url.search,
-  baseUrl
+  baseUrl,
 );
 ---
 
