@@ -27,7 +27,6 @@ const seo = defineCollection({
     title: z.string(),
     description: z.string(),
     favicon: z.string(),
-
   }),
 });
 
@@ -40,6 +39,6 @@ const metrika = defineCollection({
     accurateTrackBounce: z.boolean(),
     webvisor: z.boolean(),
   }),
-})
+});
 
 export const collections = { baseInfo, seo, metrika };

@@ -15,8 +15,10 @@ export default defineConfig({
   },
   site: "http://astro-template.ru", // TODO
   integrations: [
-    tailwind(),
-    /* preact(), */ react(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    react(),
     mdx(),
     sitemap(),
     compress(),
