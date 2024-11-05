@@ -9,7 +9,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "hybrid",
+  output: "static",
   security: {
     checkOrigin: true,
   },
@@ -23,7 +23,7 @@ export default defineConfig({
     sitemap(),
     compress(),
   ],
-  adapter: node({
-    mode: "standalone", //todo
-  }),
+  // adapter: node({
+  //   mode: "standalone", //todo
+  // }),
 });
