@@ -23,5 +23,7 @@ export default defineConfig({
     sitemap(),
     compress(),
   ],
-  
+  adapter: node({
+    mode: "standalone", //todo
+  }),
 });
