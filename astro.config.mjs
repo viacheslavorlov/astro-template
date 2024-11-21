@@ -9,11 +9,11 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "hybrid",
+  output: "server",
   security: {
     checkOrigin: true,
   },
-  site: "http://astro-template.ru", // TODO
+  // site: "http://astro-template.ru", // TODO
   integrations: [
     tailwind({
       applyBaseStyles: false,
