@@ -8,12 +8,7 @@ interface Props extends HTMLAttributes<"div"> {
   maxWidth?: number;
 }
 
-const {
-  className,
-  paddings = [6, 10, 14],
-  maxWidth = 1280,
-  ...props
-} = Astro.props;
+const { className, paddings = [6, 10, 14], maxWidth = 1280, ...props } = Astro.props;
 ---
 
 <div class={clsx("mx-auto  w-full", "custom-container", className)} {...props}>

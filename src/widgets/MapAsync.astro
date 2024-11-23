@@ -8,52 +8,44 @@ const { link, treshold = 600 } = Astro.props;
 ---
 
 <!-- Async Ymap -->
-<div class='relative overflow-hidden rounded-xl p-6 md:p-10 lg:rounded-none lg:p-0'>
-	<div
-		id='map_container'
-		class='map container-fluid'>
-		<script
-			is:inline
-			id='ymap_lazy'
-			type='text/javascript'
-			charset='utf-8'
-			async
-			data-src={link}
-		></script>
-	</div>
+<div class="relative overflow-hidden rounded-xl p-6 md:p-10 lg:rounded-none lg:p-0">
+  <div id="map_container" class="map container-fluid">
+    <script is:inline id="ymap_lazy" type="text/javascript" charset="utf-8" async data-src={link}
+    ></script>
+  </div>
 </div>
 <script is:inline define:vars={{ treshold, link }}>
-	let map_container = document.getElementById('map_container');
-	let options_map = {
-		once: true, //запуск один раз, и удаление наблюдателя сразу
-		passive: true,
-		capture: true,
-	};
+  let map_container = document.getElementById("map_container");
+  let options_map = {
+    once: true, //запуск один раз, и удаление наблюдателя сразу
+    passive: true,
+    capture: true,
+  };
 
-	map_container.addEventListener('click', start_lazy_map, options_map);
-	map_container.addEventListener('mouseover', start_lazy_map, options_map);
-	map_container.addEventListener('touchstart', start_lazy_map, options_map);
-	map_container.addEventListener('touchmove', start_lazy_map, options_map);
-	window.addEventListener('scroll', checkMapVisibility);
-	window.addEventListener('DOMContentLoaded', checkMapVisibility);
+  map_container.addEventListener("click", start_lazy_map, options_map);
+  map_container.addEventListener("mouseover", start_lazy_map, options_map);
+  map_container.addEventListener("touchstart", start_lazy_map, options_map);
+  map_container.addEventListener("touchmove", start_lazy_map, options_map);
+  window.addEventListener("scroll", checkMapVisibility);
+  window.addEventListener("DOMContentLoaded", checkMapVisibility);
 
-	let map_loaded = false;
-	function start_lazy_map() {
-		if (!map_loaded) {
-			let map_block = document.getElementById('ymap_lazy');
-			map_loaded = true;
-			map_container.style.backgroundImage = 'none';
-			map_block.setAttribute('src', map_block.getAttribute('data-src'));
-			map_block.removeAttribute('data_src');
-		}
-	}
+  let map_loaded = false;
+  function start_lazy_map() {
+    if (!map_loaded) {
+      let map_block = document.getElementById("ymap_lazy");
+      map_loaded = true;
+      map_container.style.backgroundImage = "none";
+      map_block.setAttribute("src", map_block.getAttribute("data-src"));
+      map_block.removeAttribute("data_src");
+    }
+  }
 
-	function checkMapVisibility() {
-		let rect = map_container.getBoundingClientRect();
-		let distanceToViewport = rect.top - window.innerHeight - treshhold;
+  function checkMapVisibility() {
+    let rect = map_container.getBoundingClientRect();
+    let distanceToViewport = rect.top - window.innerHeight - treshhold;
 
-		if (distanceToViewport <= 0) {
-			start_lazy_map();
-		}
-	}
+    if (distanceToViewport <= 0) {
+      start_lazy_map();
+    }
+  }
 </script>

@@ -10,12 +10,7 @@ interface Props extends HTMLAttributes<"button"> {
 }
 
 // Кнопка трёх типов: слегка скругленные края, полностью скругленные края, круглая кнопка
-const {
-  variant = "regular",
-  className,
-  color = "light",
-  ...props
-} = Astro.props;
+const { variant = "regular", className, color = "light", ...props } = Astro.props;
 ---
 
 <button
@@ -32,7 +27,7 @@ const {
         ? "rounded-md"
         : "rounded-full",
     "",
-    className
+    className,
   )}
   {...props}
 >

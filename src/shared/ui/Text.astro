@@ -30,16 +30,8 @@ const {
   class={clsx(
     "text",
     size === "small" ? "t-xs" : "t-s",
-    align === "left"
-      ? "text-left"
-      : align === "right"
-        ? "text-right"
-        : "text-center",
-    elementAlign === "left"
-      ? "mr-auto"
-      : elementAlign === "right"
-        ? "ml-auto"
-        : "mx-auto",
+    align === "left" ? "text-left" : align === "right" ? "text-right" : "text-center",
+    elementAlign === "left" ? "mr-auto" : elementAlign === "right" ? "ml-auto" : "mx-auto",
     full && "w-full",
     bold && "font-bold",
     className,

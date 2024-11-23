@@ -1,66 +1,54 @@
 ---
-import { Button } from '#/components/ui/button';
-import { Card } from '#/components/ui/card';
-import { Input } from '#/components/ui/input';
-import { Section, Title } from '#/shared/ui';
-import Layout from '../layouts/Layout.astro';
+import { Button } from "#/components/ui/button";
+import { Card } from "#/components/ui/card";
+import { Input } from "#/components/ui/input";
+import { Section, Title } from "#/shared/ui";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout
-    description='components'
-    title='Components'>
-    <Section className='bg-chart-2'>
-        <!-- <Container> -->
-        <div class='container mx-auto'>
-            <Title h='xl'>Карточка</Title>
+<Layout description="components" title="Components">
+  <Section className="bg-chart-2">
+    <!-- <Container> -->
+    <div class="container mx-auto">
+      <Title h="xl">Карточка</Title>
 
-            <div class='flex flex-col gap-10'>
-                <Card
-                    
-                    className=''>
-                    <h1>Карточка</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus
-                        magnam itaque maiores! Deleniti dolor ex nemo perspiciatis nostrum sed
-                        voluptatibus, a saepe tempore perferendis, enim inventore accusantium
-                        repudiandae necessitatibus. Autem sapiente facilis quod hic eius voluptatem
-                        quis saepe eum ratione, labore ad corporis, nulla nobis illo inventore sint
-                        quaerat quo tempore velit, maiores assumenda nesciunt earum! Porro tempore
-                        hic nisi corrupti! Odit nam quam illum dignissimos voluptatum, quo,
-                        provident ex totam, repellat culpa optio perspiciatis facere debitis odio in
-                        beatae rerum consequuntur voluptate officiis quidem ducimus suscipit modi.
-                        Perspiciatis excepturi asperiores soluta, blanditiis a quas repudiandae
-                        vitae nesciunt voluptas.
-                    </p>
-                </Card>
-            </div>
-            <Title h='xl'>Кнопки</Title>
+      <div class="flex flex-col gap-10">
+        <Card className="">
+          <h1>Карточка</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus magnam
+            itaque maiores! Deleniti dolor ex nemo perspiciatis nostrum sed voluptatibus, a saepe
+            tempore perferendis, enim inventore accusantium repudiandae necessitatibus. Autem
+            sapiente facilis quod hic eius voluptatem quis saepe eum ratione, labore ad corporis,
+            nulla nobis illo inventore sint quaerat quo tempore velit, maiores assumenda nesciunt
+            earum! Porro tempore hic nisi corrupti! Odit nam quam illum dignissimos voluptatum, quo,
+            provident ex totam, repellat culpa optio perspiciatis facere debitis odio in beatae
+            rerum consequuntur voluptate officiis quidem ducimus suscipit modi. Perspiciatis
+            excepturi asperiores soluta, blanditiis a quas repudiandae vitae nesciunt voluptas.
+          </p>
+        </Card>
+      </div>
+      <Title h="xl">Кнопки</Title>
 
-            <div class='flex flex-col gap-10'>
-                <Card className='flex gap-4 bg-chart-1'>
-                    <Button variant={'default'}>Кнопка</Button>
-                    <Button variant={'destructive'}>Кнопка</Button>
-                    <Button variant={'ghost'}>Кнопка</Button>
-                    <Button variant={'link'}>Кнопка</Button>
-                    <Button variant={'outline'}>Кнопка</Button>
-                    <Button variant={'secondary'}>Кнопка</Button>
-                </Card>
-            </div>
-            <Title h='xl'>Инпут</Title>
+      <div class="flex flex-col gap-10">
+        <Card className="flex gap-4 bg-chart-1">
+          <Button variant={"default"}>Кнопка</Button>
+          <Button variant={"destructive"}>Кнопка</Button>
+          <Button variant={"ghost"}>Кнопка</Button>
+          <Button variant={"link"}>Кнопка</Button>
+          <Button variant={"outline"}>Кнопка</Button>
+          <Button variant={"secondary"}>Кнопка</Button>
+        </Card>
+      </div>
+      <Title h="xl">Инпут</Title>
 
-            <div class='flex flex-col gap-10'>
-                <div class='flex gap-4'>
-                    <Input
-                        type='text'
-                        placeholder='Placeholder'
-                    />
-                    <Input
-                        type='number'
-                        placeholder='123456'
-                    />
-                </div>
-            </div>
+      <div class="flex flex-col gap-10">
+        <div class="flex gap-4">
+          <Input type="text" placeholder="Placeholder" />
+          <Input type="number" placeholder="123456" />
         </div>
-        <!-- </Container> -->
-    </Section>
+      </div>
+    </div>
+    <!-- </Container> -->
+  </Section>
 </Layout>
