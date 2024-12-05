@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 // import preact from "@astrojs/preact";
 import node from "@astrojs/node";
-import compress from "astro-compress";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
@@ -21,7 +20,6 @@ export default defineConfig({
     react(),
     mdx(),
     sitemap(),
-    compress(),
   ],
   adapter: node({
     mode: "standalone", //todo
