@@ -3,7 +3,6 @@ import { getEntry } from "astro:content";
 import YandexMetrika from "../shared/metrika/YandexMetrika.astro";
 import Seo from "../shared/seo/Seo.astro";
 import "../styles/global.css";
-import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -21,7 +20,6 @@ const { data } = await getEntry("seo", "base");
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <Seo ogImage={data.favicon} {...data} />
-    <ViewTransitions />
     <script is:inline>
       const getThemePreference = () => {
         if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {

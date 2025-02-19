@@ -27,21 +27,19 @@ const baseUrl = Astro.site ?? Astro.url;
 const defaultCanonicalUrl = new URL(Astro.url.pathname + Astro.url.search, baseUrl);
 ---
 
-<head>
-  <!-- Required Meta Tags -->
-  <title>{title}</title>
-  <link rel="icon" type="image/png" href={favicon} />
-  <meta name="description" content={description} />
-  <link rel="canonical" href={defaultCanonicalUrl.href} />
-  <meta charset="UTF-8" />
-  <!-- Optional Meta Tags for SEO -->
-  {keywords && <meta name="keywords" content={keywords} />}
-  {author && <meta name="author" content={author} />}
+<!-- Required Meta Tags -->
+<title>{title}</title>
+<link rel="icon" type="image/png" href={favicon} />
+<meta name="description" content={description} />
+<link rel="canonical" href={defaultCanonicalUrl.href} />
+<meta charset="UTF-8" />
+<!-- Optional Meta Tags for SEO -->
+{keywords && <meta name="keywords" content={keywords} />}
+{author && <meta name="author" content={author} />}
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content={ogType} />
-  {ogImage && <meta property="og:image" content={ogImage} />}
-  {ogUrl && <meta property="og:url" content={ogUrl} />}
-</head>
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+{ogImage && <meta property="og:image" content={ogImage} />}
+{ogUrl && <meta property="og:url" content={ogUrl} />}
