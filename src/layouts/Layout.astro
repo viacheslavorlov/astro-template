@@ -2,17 +2,22 @@
 import { AstroContainer, AstroSection } from "#/components/astro";
 import { ThemeSwitcher } from "#/components/shadcn/ThemeSwitcher";
 import { Seo } from "#/shared/seo";
+import { getEntry } from "astro:content";
 import YandexMetrika from "../shared/metrika/YandexMetrika.astro";
 import "../styles/global.css";
+import type { SeoProps } from "#/shared/types";
 
 interface Props {
   title: string;
   description: string;
   keywords?: string | string[];
   image?: string;
+  seoData?: SeoProps;
 }
 
-// const { data } = await getEntry("seo", "base");
+const { title, description, keywords, image, seoData } = Astro.props;
+
+const data = await getEntry("seo", "base");
 ---
 
 <!doctype html>
@@ -20,7 +25,7 @@ interface Props {
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <Seo />
+    <Seo {...seoData || { ...data?.data, title, description, keywords, image }} />
     <script is:inline>
       const getThemePreference = () => {
         if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {

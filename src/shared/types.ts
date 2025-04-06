@@ -8,3 +8,14 @@ export type MenuItem = {
   title: string;
   href: string;
 };
+
+export type SeoProps = {
+  title?: string;
+  favicon?: string;
+  description?: string;
+  keywords?: string;
+  author?: string;
+  ogType?: string;
+  image?: string;
+  ogUrl?: string;
+};

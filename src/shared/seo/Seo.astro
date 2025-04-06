@@ -1,16 +1,8 @@
 ---
-type Props = {
-  title?: string;
-  favicon?: string;
-  description?: string;
-  keywords?: string;
-  author?: string;
-  ogType?: string;
-  ogImage?: string;
-  ogUrl?: string;
-};
+import type { SeoProps } from "../types";
 
 // In content/seo/base.md
+type Props = SeoProps;
 
 const {
   title,
@@ -19,15 +11,12 @@ const {
   keywords,
   author,
   ogType = "website",
-  ogImage,
+  image,
   ogUrl,
 } = Astro.props;
 
 const baseUrl = Astro.site ?? Astro.url;
-const defaultCanonicalUrl = new URL(
-  Astro.url.pathname + Astro.url.search,
-  baseUrl,
-);
+const defaultCanonicalUrl = new URL(Astro.url.pathname + Astro.url.search, baseUrl);
 ---
 
 <!-- Required Meta Tags -->
@@ -44,5 +33,5 @@ const defaultCanonicalUrl = new URL(
 <meta property="og:title" content={title || ""} />
 <meta property="og:description" content={description || ""} />
 <meta property="og:type" content={ogType || ""} />
-{ogImage && <meta property="og:image" content={ogImage} />}
+{image && <meta property="og:image" content={image} />}
 {ogUrl && <meta property="og:url" content={ogUrl} />}
