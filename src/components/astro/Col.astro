@@ -1,0 +1,10 @@
+---
+import { colVariants } from "../custom-react/col";
+import { cn } from "#/lib/utils";
+
+const { as: Component = "div", span, adaptive, padding, gap, className, ...rest } = Astro.props;
+---
+
+<Component class={cn(colVariants({ span, adaptive, padding }), className)} {...rest}>
+    <slot />
+</Component>

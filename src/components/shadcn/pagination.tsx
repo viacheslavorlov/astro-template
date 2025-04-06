@@ -2,10 +2,11 @@ import * as React from "react"
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "#/lib/utils"
-import { ButtonProps, buttonVariants } from "#/components/shadcn/button"
+import { type ButtonProps, buttonVariants } from "#/components/shadcn/button"
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
+    // biome-ignore lint/a11y/noRedundantRoles: <explanation>
     role="navigation"
     aria-label="pagination"
     className={cn("mx-auto flex w-full justify-center", className)}

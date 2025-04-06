@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "#/lib/utils";
+import { paragraphVariants } from "../custom-react/typography";
+
+type Props = HTMLAttributes<"p"> & {
+  as?: "p" | "span" | "div";
+  size?: "default" | "sm" | "lg" | "custom";
+  leading?: "default" | "tight" | "relaxed" | "custom";
+  margin?: "default" | "none";
+  align?: "left" | "center" | "right" | "justify";
+  className?: string;
+};
+
+const { as: Component = "p", size, leading, margin, align, className, ...rest } = Astro.props;
+---
+
+<Component class={cn(paragraphVariants({ size, leading, margin, align }), className)} {...rest}>
+  <slot />
+</Component>

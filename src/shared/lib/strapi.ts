@@ -1,4 +1,5 @@
 import qs from "qs";
+//@ts-ignore
 import type { components, paths } from "#/types/strapi/strapi"; // create types by `npm run types:generate`
 
 interface Query {

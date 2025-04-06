@@ -1,17 +1,13 @@
 ---
-import Container from "#/components/astro/Container.astro";
-import Section from "#/components/astro/Section.astro";
-import Title from "#/components/astro/Title.astro";
+import { AstroContainer, AstroSection } from "#/components/astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro." description="">
   <main>
     <!-- контент страницы -->
-    <Section>
-      <Container className="flex gap-2">
-        <Title h="xl"> Чистый шаблон </Title>
-      </Container>
-    </Section>
+    <AstroSection>
+      <AstroContainer className="flex gap-2" />
+    </AstroSection>
   </main>
 </Layout>

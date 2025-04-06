@@ -10,8 +10,6 @@
 │   ├── shared/
 │   │   ├── ui/
 │   │   ├── seo/
-│   │   ├── metrika/
-│   │   │
 │   │   └── lib/
 │   ├── layouts/
 │   │   └── Layout.astro

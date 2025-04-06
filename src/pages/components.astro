@@ -9,10 +9,13 @@ import {
   AstroCardTitle,
   AstroContainer,
   AstroSection,
-  AstroTitle,
+  P,
 } from "#/components/astro";
+import Heading from "#/components/astro/H.astro";
+import Card from "#/components/astro/card/Card.astro";
+import CardContent from "#/components/astro/card/CardContent.astro";
+import CardHeader from "#/components/astro/card/CardHeader.astro";
 import { Button } from "#/components/shadcn/button";
-import { Card } from "#/components/shadcn/card";
 import { Input } from "#/components/shadcn/input";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -70,39 +73,48 @@ import Layout from "../layouts/Layout.astro";
   </AstroSection>
   <AstroSection className="bg-chart-2">
     <AstroContainer>
-      <div class="AstroContainer mx-auto">
-        <AstroTitle h="xl">Карточка</AstroTitle>
+      <div class="container mx-auto">
+        <Heading level="h3">Карточка</Heading>
 
         <div class="flex flex-col gap-10">
           <Card className="">
-            <h1>Карточка</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus magnam
-              itaque maiores! Deleniti dolor ex nemo perspiciatis nostrum sed voluptatibus, a saepe
-              tempore perferendis, enim inventore accusantium repudiandae necessitatibus. Autem
-              sapiente facilis quod hic eius voluptatem quis saepe eum ratione, labore ad corporis,
-              nulla nobis illo inventore sint quaerat quo tempore velit, maiores assumenda nesciunt
-              earum! Porro tempore hic nisi corrupti! Odit nam quam illum dignissimos voluptatum,
-              quo, provident ex totam, repellat culpa optio perspiciatis facere debitis odio in
-              beatae rerum consequuntur voluptate officiis quidem ducimus suscipit modi.
-              Perspiciatis excepturi asperiores soluta, blanditiis a quas repudiandae vitae nesciunt
-              voluptas.
-            </p>
+            <CardHeader>
+              <Heading level="h3" as="span" margin="none">Карточка</Heading>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              <P size="lg" as="p" className="mt-2 text-purple-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus magnam
+                itaque maiores! Deleniti dolor ex nemo perspiciatis nostrum sed voluptatibus, a
+                saepe tempore perferendis, enim inventore accusantium repudiandae necessitatibus.
+                Autem sapiente facilis quod hic eius voluptatem quis saepe eum ratione, labore ad
+                corporis, nulla nobis illo inventore sint quaerat quo tempore velit, maiores
+                assumenda nesciunt earum! Porro tempore hic nisi corrupti! Odit nam quam illum
+                dignissimos voluptatum, quo, provident ex totam, repellat culpa optio perspiciatis
+                facere debitis odio in beatae rerum consequuntur voluptate officiis quidem ducimus
+                suscipit modi. Perspiciatis excepturi asperiores soluta, blanditiis a quas
+                repudiandae vitae nesciunt voluptas.
+              </P>
+            </CardContent>
           </Card>
         </div>
-        <AstroTitle h="xl">Кнопки</AstroTitle>
+        <Heading level="h2">Кнопки</Heading>
 
         <div class="flex flex-col gap-10">
           <Card className="flex gap-4 bg-chart-1">
-            <Button variant={"default"}>Кнопка</Button>
-            <Button variant={"destructive"}>Кнопка</Button>
-            <Button variant={"ghost"}>Кнопка</Button>
-            <Button variant={"link"}>Кнопка</Button>
-            <Button variant={"outline"}>Кнопка</Button>
-            <Button variant={"secondary"}>Кнопка</Button>
+            <CardHeader>
+              <Heading level="h3" margin="none">Карточка</Heading>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              <Button variant={"default"}>Кнопка</Button>
+              <Button variant={"destructive"}>Кнопка</Button>
+              <Button variant={"ghost"}>Кнопка</Button>
+              <Button variant={"link"}>Кнопка</Button>
+              <Button variant={"outline"}>Кнопка</Button>
+              <Button variant={"secondary"}>Кнопка</Button>
+            </CardContent>
           </Card>
         </div>
-        <AstroTitle h="xl">Инпут</AstroTitle>
+        <Heading>Инпут</Heading>
 
         <div class="flex flex-col gap-10">
           <div class="flex gap-4">

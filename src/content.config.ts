@@ -30,15 +30,5 @@ const seo = defineCollection({
   }),
 });
 
-const metrika = defineCollection({
-  type: "content",
-  schema: z.object({
-    counter: z.number(),
-    clickmap: z.boolean(),
-    trackLinks: z.boolean(),
-    accurateTrackBounce: z.boolean(),
-    webvisor: z.boolean(),
-  }),
-});
 
-export const collections = { baseInfo, seo, metrika };
+export const collections = { baseInfo, seo };

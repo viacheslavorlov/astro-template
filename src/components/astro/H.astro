@@ -1,0 +1,33 @@
+---
+import { cn } from "#/lib/utils";
+import type { HTMLAttributes } from "astro/types";
+import { headingVariants } from "../custom-react/typography";
+
+type Props<T extends "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span"> = {
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
+  level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  margin?: "default" | "small" | "none";
+  className?: string;
+} & (
+  | HTMLAttributes<"h1">
+  | HTMLAttributes<"h2">
+  | HTMLAttributes<"h3">
+  | HTMLAttributes<"h4">
+  | HTMLAttributes<"h5">
+  | HTMLAttributes<"h6">
+  | HTMLAttributes<"span">
+);
+
+const {
+  //@ts-ignore
+  as: Component = "h2",
+  level = "h2",
+  margin = "default",
+  className,
+  ...rest
+} = Astro.props satisfies Props<typeof Component>;
+---
+
+<Component class={cn(headingVariants({ level, margin }), className)} {...rest}>
+  <slot />
+</Component>
