@@ -3,12 +3,44 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "lineWidth": 80
+    "lineWidth": 80,
+    "ignore": [
+      "**/*.min.js",
+      "node_modules",
+      ".astro",
+      ".vscode",
+      "./pnpm-lock.yaml",
+      "./pnpm-workspace.yaml"
+    ]
   },
   "linter": {
-    "enabled": false
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    },
+    "ignore": [
+      "**/*.min.js",
+      "node_modules",
+      ".astro",
+      ".vscode",
+      "./pnpm-lock.yaml",
+      "./pnpm-workspace.yaml"
+    ]
   },
   "organizeImports": {
     "enabled": true
-  }
+  },
+  "overrides": [
+    {
+      "include": ["*.astro"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "warn",
+            "useImportType": "warn"
+          }
+        }
+      }
+    }
+  ]
 }

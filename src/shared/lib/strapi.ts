@@ -52,11 +52,16 @@ export default async function fetchApi<retu>({
   wrappedByList,
   token,
 }: Props): Promise<retu> {
+  if (typeof endpoint === "symbol")
+    throw new Error("Endpoin is a simbol [Symbol]");
+  if (typeof endpoint === "number") throw new Error("Endpoin is a Number");
   if (endpoint.startsWith("/")) {
     endpoint = endpoint.slice(1) as Props["endpoint"];
   }
 
-  const url = new URL(`${import.meta.env.PUBLIC_STRAPI_URL}/api/${endpoint}`);
+  const url = new URL(
+    `${import.meta.env.PUBLIC_STRAPI_URL}/api/${endpoint as string}`,
+  );
   let fullUrl: string | undefined;
   if (query) {
     fullUrl = `${url.toString()}?${qs.stringify(query, {

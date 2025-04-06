@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { buttonVariants } from "#/components/shadcn/button";
+import { cn } from "#/lib/utils";
+
+type Props = {
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link"
+    | undefined;
+  size?: "sm" | "icon" | "lg" | "default";
+} & HTMLAttributes<"button">;
+
+const {
+  variant = "default",
+  size = "default",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const classes = cn(buttonVariants({ variant, size, className }));
+---
+
+<button class={classes} {...rest}>
+  <slot />
+</button>

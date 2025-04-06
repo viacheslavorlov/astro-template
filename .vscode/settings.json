@@ -1,20 +1,20 @@
 {
-	"eslint.validate": [
-		"javascript",
-		"javascriptreact",
-		"astro", // Enable .astro
-		"typescript", // Enable .ts
-		"typescriptreact" // Enable .tsx
-	],
-	"a-file-icon-vscode.activeIconPacks": [
-		"rails",
-		"angular",
-		"react",
-		"phalcon"
-	],
-	"a-file-icon-vscode.arrowTheme": "material",
-	"a-file-icon-vscode.folderColor": "#90a4ae",
-	"a-file-icon-vscode.folderTheme": "specific",
-	"a-file-icon-vscode.opacity": 1,
-	"a-file-icon-vscode.saturation": 1
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ],
+  "a-file-icon-vscode.activeIconPacks": [
+    "rails",
+    "angular",
+    "react",
+    "phalcon"
+  ],
+  "a-file-icon-vscode.arrowTheme": "material",
+  "a-file-icon-vscode.folderColor": "#90a4ae",
+  "a-file-icon-vscode.folderTheme": "specific",
+  "a-file-icon-vscode.opacity": 1,
+  "a-file-icon-vscode.saturation": 1
 }

@@ -10,7 +10,8 @@
     "types:generate": "openapi-typescript ../cms/src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/types/strapi/strapi.d.ts",
     "astro": "astro",
     "prettier": "prettier --write .",
-    "format": "biome format --write ."
+    "lint": "biome lint --write .",
+    "lint:fix": "biome check --write ."
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -53,6 +54,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@tailwindcss/typography": "^0.5.13",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1"

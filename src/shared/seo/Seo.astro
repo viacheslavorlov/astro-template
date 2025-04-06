@@ -1,8 +1,8 @@
 ---
 type Props = {
-  title: string;
-  favicon: string;
-  description: string;
+  title?: string;
+  favicon?: string;
+  description?: string;
   keywords?: string;
   author?: string;
   ogType?: string;
@@ -14,7 +14,7 @@ type Props = {
 
 const {
   title,
-  favicon,
+  favicon = "./favicon.ico",
   description,
   keywords,
   author,
@@ -24,7 +24,10 @@ const {
 } = Astro.props;
 
 const baseUrl = Astro.site ?? Astro.url;
-const defaultCanonicalUrl = new URL(Astro.url.pathname + Astro.url.search, baseUrl);
+const defaultCanonicalUrl = new URL(
+  Astro.url.pathname + Astro.url.search,
+  baseUrl,
+);
 ---
 
 <!-- Required Meta Tags -->
@@ -38,8 +41,8 @@ const defaultCanonicalUrl = new URL(Astro.url.pathname + Astro.url.search, baseU
 {author && <meta name="author" content={author} />}
 
 <!-- Open Graph Meta Tags -->
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:type" content={ogType} />
+<meta property="og:title" content={title || ""} />
+<meta property="og:description" content={description || ""} />
+<meta property="og:type" content={ogType || ""} />
 {ogImage && <meta property="og:image" content={ogImage} />}
 {ogUrl && <meta property="og:url" content={ogUrl} />}

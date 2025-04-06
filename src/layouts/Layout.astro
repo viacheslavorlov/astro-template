@@ -1,7 +1,8 @@
 ---
-import { getEntry } from "astro:content";
+import { AstroContainer, AstroSection } from "#/components/astro";
+import { ThemeSwitcher } from "#/components/shadcn/ThemeSwitcher";
+import { Seo } from "#/shared/seo";
 import YandexMetrika from "../shared/metrika/YandexMetrika.astro";
-import Seo from "../shared/seo/Seo.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -11,15 +12,15 @@ interface Props {
   image?: string;
 }
 
-const { data } = await getEntry("seo", "base");
+// const { data } = await getEntry("seo", "base");
 ---
 
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <Seo ogImage={data.favicon} {...data} />
+    <Seo />
     <script is:inline>
       const getThemePreference = () => {
         if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
@@ -43,6 +44,11 @@ const { data } = await getEntry("seo", "base");
     </script>
   </head>
   <body>
+    <AstroSection>
+      <AstroContainer>
+        <ThemeSwitcher client:load />
+      </AstroContainer>
+    </AstroSection>
     <slot />
     <style is:global>
       /*   Подключаем шрифты тут  */
