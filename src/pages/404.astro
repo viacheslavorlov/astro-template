@@ -1,0 +1,22 @@
+---
+import Container from "#/components/astro/Container.astro";
+import H from "#/components/astro/H.astro";
+import Section from "#/components/astro/Section.astro";
+import Layout from "#/layouts/Layout.astro";
+
+interface Props {
+  error: unknown;
+}
+
+const { error } = Astro.props;
+---
+
+<Layout title="Error page" description="error page">
+  <Section>
+    <Container>
+      <H>Ошибка: {error}</H>
+      <p>Что-то пошло не так, попробуйте перезагрузить страницу.</p>
+      <a href="/">Вернуться на главную</a>
+    </Container>
+  </Section>
+</Layout>

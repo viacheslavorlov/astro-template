@@ -30,5 +30,4 @@ const seo = defineCollection({
   }),
 });
 
-
 export const collections = { baseInfo, seo };

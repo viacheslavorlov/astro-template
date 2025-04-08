@@ -7,6 +7,7 @@ export type H = "xl" | "l" | "m";
 export type MenuItem = {
   title: string;
   href: string;
+  nested?: MenuItem[];
 };
 
 export type SeoProps = {

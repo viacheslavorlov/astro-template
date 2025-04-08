@@ -1,16 +1,16 @@
 @keyframes marquee {
-	0% {
-		transform: translateX(0%);
-	}
-	100% {
-		transform: translateX(-50%);
-	}
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .marquee {
-	animation: marquee 6s linear infinite;
+  animation: marquee 6s linear infinite;
 }
 
 .bg {
-    background: linear-gradient(to right, #FFC800, #FFDF6D,#FFC800);
+  background: linear-gradient(to right, #ffc800, #ffdf6d, #ffc800);
 }

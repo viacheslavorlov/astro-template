@@ -1,11 +1,14 @@
 ---
+import { getEntry } from "astro:content";
 import { AstroContainer, AstroSection } from "#/components/astro";
 import { ThemeSwitcher } from "#/components/shadcn/ThemeSwitcher";
 import { Seo } from "#/shared/seo";
-import { getEntry } from "astro:content";
 import "../styles/global.css";
-import type { SeoProps } from "#/shared/types";
 import { ClientRouter } from "astro:transitions";
+import DesktopMenu from "#/components/astro/DesktopMenu.astro";
+// import { DesktopMenu } from "#/components/custom-react/nav-menu";
+import { menuItems } from "#/shared/const/menu";
+import type { SeoProps } from "#/shared/types";
 
 interface Props {
   title: string;
@@ -22,7 +25,7 @@ const seo = seoData || (data?.data as SeoProps);
 ---
 
 <!doctype html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru" class="w-full scroll-smooth">
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -48,17 +51,20 @@ const seo = seoData || (data?.data as SeoProps);
         });
       }
     </script>
-    <ClientRouter />
+    <!-- <ClientRouter /> -->
   </head>
   <body>
-    <main transition:animate="slide">
+    <header transition:persist>
       <AstroSection>
         <AstroContainer>
-          <ThemeSwitcher client:load />
+          <!-- <DesktopMenu config={menuItems} client:load /> -->
+          <DesktopMenu config={menuItems} />
         </AstroContainer>
       </AstroSection>
+    </header>
+    <main transition:animate="slide">
+      <slot />
     </main>
-    <slot />
     <style is:global>
       /*   Подключаем шрифты тут  */
     </style>

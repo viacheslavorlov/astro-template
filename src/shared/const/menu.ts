@@ -6,11 +6,21 @@ export const menuItems: MenuItem[] = [
     href: "/",
   },
   {
-    title: "Каталог",
-    href: "/catalog",
+    title: "Компоненты",
+    href: "/components",
+    nested: [
+      {
+        title: "react components",
+        href: "/components/react",
+      },
+      {
+        title: "astro components",
+        href: "/components/astro",
+      },
+    ],
   },
-  {
-    title: "Контакты",
-    href: "/contacts",
-  },
+  // {
+  //   title: "Контакты",
+  //   href: "/contacts",
+  // },
 ];

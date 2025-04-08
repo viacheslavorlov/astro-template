@@ -1,5 +1,6 @@
 ignoredBuiltDependencies:
-  - '@biomejs/biome'
+  - "@biomejs/biome"
 onlyBuiltDependencies:
+  - core-js
   - esbuild
   - sharp

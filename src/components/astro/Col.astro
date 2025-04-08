@@ -1,10 +1,28 @@
 ---
-import { colVariants } from "../custom-react/col";
+import type { HTMLAttributes } from "astro/types";
 import { cn } from "#/lib/utils";
+import { colVariants } from "../custom-react/col";
 
-const { as: Component = "div", span, adaptive, padding, gap, className, ...rest } = Astro.props;
+interface Props extends HTMLAttributes<"div" | "section" | "article"> {
+  as?: "div" | "section" | "article";
+  span?: "none" | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | "full";
+  adaptive?: "none" | "md" | "lg";
+  padding?: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 10 | 12;
+  gap?: 0 | 2 | 4 | 5 | 6 | 7 | 8 | 10 | 12;
+  className?: string;
+}
+
+const {
+  as: Component = "div",
+  span,
+  adaptive,
+  padding,
+  gap,
+  className,
+  ...rest
+} = Astro.props satisfies Props;
 ---
 
-<Component class={cn(colVariants({ span, adaptive, padding }), className)} {...rest}>
-    <slot />
+<Component class={cn(colVariants({ span, adaptive, padding, gap }), className)} {...rest}>
+  <slot />
 </Component>

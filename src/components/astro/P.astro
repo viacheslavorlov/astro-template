@@ -12,7 +12,15 @@ type Props = HTMLAttributes<"p"> & {
   className?: string;
 };
 
-const { as: Component = "p", size, leading, margin, align, className, ...rest } = Astro.props;
+const {
+  as: Component = "p",
+  size,
+  leading,
+  margin,
+  align,
+  className,
+  ...rest
+} = Astro.props;
 ---
 
 <Component class={cn(paragraphVariants({ size, leading, margin, align }), className)} {...rest}>

@@ -1,0 +1,125 @@
+---
+import {
+  AstroButton,
+  AstroCard,
+  AstroCardContent,
+  AstroCardDescription,
+  AstroCardFooter,
+  AstroCardHeader,
+  AstroCardTitle,
+  AstroContainer,
+  AstroSection,
+  P,
+} from "#/components/astro";
+import Col from "#/components/astro/Col.astro";
+import Heading from "#/components/astro/H.astro";
+import Row from "#/components/astro/Row.astro";
+import Card from "#/components/astro/card/Card.astro";
+import CardContent from "#/components/astro/card/CardContent.astro";
+import CardHeader from "#/components/astro/card/CardHeader.astro";
+
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout description="components" title="Components">
+  <AstroSection>
+    <AstroContainer className="space-y-4">
+      <div>
+        <AstroButton>Дефолтная кнопка</AstroButton>
+        <AstroButton size="sm">Дефолтная кнопка</AstroButton>
+        <AstroButton size="lg">Дефолтная кнопка</AstroButton>
+      </div>
+      <div>
+        <AstroButton variant="destructive">destructive кнопка</AstroButton>
+        <AstroButton variant="destructive" size="sm">destructive кнопка</AstroButton>
+        <AstroButton variant="destructive" size="lg">destructive кнопка</AstroButton>
+      </div>
+      <div>
+        <AstroButton variant="ghost">ghost кнопка</AstroButton>
+        <AstroButton variant="ghost" size="sm">ghost кнопка</AstroButton>
+        <AstroButton variant="ghost" size="lg">ghost кнопка</AstroButton>
+      </div>
+      <div>
+        <AstroButton variant="outline">outline кнопка</AstroButton>
+        <AstroButton variant="outline" size="sm">outline кнопка</AstroButton>
+        <AstroButton variant="outline" size="lg">outline кнопка</AstroButton>
+      </div>
+      <div>
+        <AstroButton variant="secondary">secondary кнопка</AstroButton>
+        <AstroButton variant="secondary" size="sm">secondary кнопка</AstroButton>
+        <AstroButton variant="secondary" size="lg">secondary кнопка</AstroButton>
+      </div>
+      <div>
+        <AstroButton variant="link">link кнопка</AstroButton>
+        <AstroButton variant="link" size="sm">link кнопка</AstroButton>
+        <AstroButton variant="link" size="lg">link кнопка</AstroButton>
+      </div>
+    </AstroContainer>
+  </AstroSection>
+  <AstroSection>
+    <AstroContainer>
+      <AstroCard>
+        <AstroCardHeader>
+          <AstroCardTitle>AstroCard Title</AstroCardTitle>
+          <AstroCardDescription>AstroCard Description</AstroCardDescription>
+        </AstroCardHeader>
+        <AstroCardContent>
+          <p>AstroCard Content</p>
+        </AstroCardContent>
+        <AstroCardFooter>
+          <p>AstroCard Footer</p>
+        </AstroCardFooter>
+      </AstroCard>
+    </AstroContainer>
+  </AstroSection>
+  <AstroSection className="bg-chart-2">
+    <AstroContainer>
+      <div class="container mx-auto">
+        <Heading level="h3">Карточка</Heading>
+
+        <div class="flex flex-col gap-10">
+          <Card className="">
+            <CardHeader>
+              <Heading level="h3" as="span" margin="none">Карточка</Heading>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              <P size="lg" as="p" className="mt-2 text-purple-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus magnam
+                itaque maiores! Deleniti dolor ex nemo perspiciatis nostrum sed voluptatibus, a
+                saepe tempore perferendis, enim inventore accusantium repudiandae necessitatibus.
+                Autem sapiente facilis quod hic eius voluptatem quis saepe eum ratione, labore ad
+                corporis, nulla nobis illo inventore sint quaerat quo tempore velit, maiores
+                assumenda nesciunt earum! Porro tempore hic nisi corrupti! Odit nam quam illum
+                dignissimos voluptatum, quo, provident ex totam, repellat culpa optio perspiciatis
+                facere debitis odio in beatae rerum consequuntur voluptate officiis quidem ducimus
+                suscipit modi. Perspiciatis excepturi asperiores soluta, blanditiis a quas
+                repudiandae vitae nesciunt voluptas.
+              </P>
+            </CardContent>
+          </Card>
+        </div>
+        <Heading level="h2">Кнопки</Heading>
+
+        <div class="flex flex-col gap-10">
+          <Card className="flex gap-4 bg-chart-1">
+            <CardHeader>
+              <Heading level="h3" margin="none">Карточка</Heading>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              <Col adaptive="lg">
+                <Row> adfasd as </Row>
+                <Row> adfasd as </Row>
+                <Row> adfasd as </Row>
+                <Row> adfasd as </Row>
+                <Row> adfasd as </Row>
+                <Row> adfasd as </Row>
+                <Row> adfasd as </Row>
+              </Col>
+            </CardContent>
+          </Card>
+        </div>
+        <Heading>Инпут</Heading>
+      </div>
+    </AstroContainer>
+  </AstroSection>
+</Layout>

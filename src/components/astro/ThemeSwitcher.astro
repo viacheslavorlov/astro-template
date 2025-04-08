@@ -1,0 +1,50 @@
+---
+import { Moon, Sun } from "lucide-react";
+import Button from "./Button.astro";
+---
+
+<Button id={"themeSwitcher"} variant="outline" size="icon" className="overflow-hidden">
+    <Sun className="sun hidden h-[1.2rem] w-[1.2rem] transition-all" />
+    <Moon className="moon h-[1.2rem] w-[1.2rem] transition-all" />
+    <span class="sr-only">Toggle theme</span>
+</Button>
+
+<script>
+    const themeSwitcher = document.getElementById("themeSwitcher");
+    const sun = themeSwitcher?.querySelector(".sun");
+    const moon = themeSwitcher?.querySelector(".moon");
+
+    const getThemePreference = () => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+            return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    };
+
+    const tooggleTheme = () => {
+        const isDark = getThemePreference() === "dark";
+        if (isDark) {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+            moon?.classList.remove("hidden");
+            sun?.classList.add("hidden");
+        } else {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+            sun?.classList.remove("hidden");
+            moon?.classList.add("hidden");
+        }
+    };
+    document.addEventListener("load", () => {
+        const isDark = getThemePreference() === "dark";
+        if (isDark) {
+            sun?.classList.add("hidden");
+            moon?.classList.remove("hidden");
+        } else {
+            sun?.classList.remove("hidden");
+            moon?.classList.add("hidden");
+        }
+    });
+
+    themeSwitcher?.addEventListener("click", tooggleTheme);
+</script>

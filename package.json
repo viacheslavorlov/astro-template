@@ -10,7 +10,7 @@
     "types:generate": "openapi-typescript ../cms/src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/types/strapi/strapi.d.ts",
     "astro": "astro",
     "prettier": "prettier --write .",
-    "lint": "biome lint --write .",
+    "format": "biome format --write .",
     "lint:fix": "biome check --write ."
   },
   "dependencies": {

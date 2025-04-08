@@ -1,30 +1,31 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+import type { VariantProps } from "class-variance-authority";
+import { cn } from "#/lib/utils";
 // biome-ignore lint/style/useImportType: <explanation>
 import { rowVariants } from "../custom-react/row";
-import { cn } from "#/lib/utils";
-import type { VariantProps } from "class-variance-authority";
-import type { HTMLAttributes } from "astro/types";
 
-type Props = {
-    as?: "div" | "ul" | "ol" | "nav" | "section" | "article";
-    direction?: "row" | "column";
-    justify?: VariantProps<typeof rowVariants>["justify"];
-    align?: VariantProps<typeof rowVariants>["align"];
-    spacing?: VariantProps<typeof rowVariants>["spacing"];
-    className?: string;
-} & HTMLAttributes<"div">;
+interface Props
+  extends HTMLAttributes<"div" | "ul" | "ol" | "nav" | "section" | "article"> {
+  as?: "div" | "ul" | "ol" | "nav" | "section" | "article";
+  direction?: "row" | "column";
+  justify?: VariantProps<typeof rowVariants>["justify"];
+  align?: VariantProps<typeof rowVariants>["align"];
+  spacing?: VariantProps<typeof rowVariants>["spacing"];
+  className?: string;
+}
 
 const {
-    as: Component = "div",
-    direction,
-    justify,
-    align,
-    spacing,
-    className,
-    ...rest
+  as: Component = "div",
+  direction,
+  justify,
+  align,
+  spacing,
+  className,
+  ...rest
 } = Astro.props as Props;
 ---
 
 <Component class={cn(rowVariants({ direction, justify, align, spacing, className }))} {...rest}>
-    <slot />
+  <slot />
 </Component>
