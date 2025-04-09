@@ -8,62 +8,52 @@ import { ThemeSwitcher } from "../shadcn/ThemeSwitcher";
 const { config } = Astro.props as { config: MenuItem[] };
 
 const navigationMenuTriggerStyle =
-  " inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none";
+  "inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none";
 ---
 
-<nav class="relative z-10 flex max-w-max flex-1 items-center justify-center w-full">
+<nav class="relative z-10 flex w-full max-w-max flex-1 items-center justify-center">
   <ul class="flex flex-1 list-none items-center justify-center space-x-1">
-    <!-- Home Link -->
     <li>
-      <a
-        href="/"
-        title="На главную"
-        class={navigationMenuTriggerStyle}
-      >
+      <a href="/" title="На главную" class={navigationMenuTriggerStyle} title="Главная">
         <GitCompareArrowsIcon className="h-6 w-6" />
       </a>
     </li>
-
-    <!-- Menu Items -->
-    {config.map((item) => (
-      <li class="relative ">
-        {!item.nested ? (
-          <a href={item.href} class={navigationMenuTriggerStyle}>
-            {item.title}
-          </a>
-        ) : (
-          
+    {
+      config.map((item) => (
+        <li class="relative">
+          {!item.nested ? (
+            <a href={item.href} class={navigationMenuTriggerStyle}>
+              {item.title}
+            </a>
+          ) : (
             <button
-              class={cn(navigationMenuTriggerStyle, "flex items-center gap-1 group")}
-              aria-haspopup="true"
-            >
+              class={cn(navigationMenuTriggerStyle, "group flex items-center gap-1")}
+              aria-haspopup="true">
               {item.title}
               <span class="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-hover:rotate-180">
                 <ChevronDown className="h-3 w-3" aria-hidden="true" />
               </span>
-                <!-- Dropdown Content -->
-                <div class="absolute left-0 top-full hidden group-hover:block w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-popover text-popover-foreground shadow-lg rounded-md border">
-                <ul class="grid grid-cols-2 gap-3">
-                    {item.nested.map((nestedItem) => (
+              <div class="absolute left-0 top-full hidden w-fit gap-3 rounded-md border bg-popover p-4 text-popover-foreground shadow-lg group-hover:block">
+                <ul class="flex flex-col gap-3">
+                  {item.nested.map((nestedItem) => (
                     <li>
-                        <a
+                      <a
                         href={nestedItem.href}
                         class={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        )}
-                        >
+                          "block select-none space-y-1 text-nowrap rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        )}>
                         <div class="text-sm font-medium leading-none">{nestedItem.title}</div>
-                        </a>
+                      </a>
                     </li>
-                    ))}
+                  ))}
                 </ul>
-                </div>
+              </div>
             </button>
-        )}
-      </li>
-    ))}
+          )}
+        </li>
+      ))
+    }
 
-    <!-- Theme Switcher -->
     <li class="ml-auto">
       <ThemeSwitcher client:load />
     </li>
@@ -71,28 +61,28 @@ const navigationMenuTriggerStyle =
 </nav>
 
 <style>
-  /* Анимации для dropdown */
   .group-hover\:block {
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transition:
+      opacity 0.2s ease-in-out,
+      transform 0.2s ease-in-out;
   }
 </style>
 
 <script>
-  // Обработчик закрытия меню при клике вне области
-  document.addEventListener('click', (e) => {
-    const dropdowns = document.querySelectorAll('.group > div');
-    dropdowns.forEach(dropdown => {
-      if (!dropdown.contains(e?.target)) {
-        dropdown.classList.add('hidden');
+  document.addEventListener("click", (e) => {
+    const dropdowns = document.querySelectorAll(".group > div");
+    dropdowns.forEach((dropdown) => {
+      if (!dropdown.contains(e?.target as Node)) {
+        dropdown.classList.add("hidden");
       }
     });
   });
 
   // Обработчики для мобильной навигации
-  document.querySelectorAll('button[aria-haspopup="true"]').forEach(button => {
-    button.addEventListener('click', () => {
+  document.querySelectorAll('button[aria-haspopup="true"]').forEach((button) => {
+    button.addEventListener("click", () => {
       const dropdown = button.nextElementSibling;
-      dropdown?.classList.toggle('hidden');
+      dropdown?.classList.toggle("hidden");
     });
   });
 </script>
