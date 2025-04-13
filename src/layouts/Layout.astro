@@ -51,6 +51,7 @@ const seo = seoData || (data?.data as SeoProps);
         });
       }
     </script>
+
     <!-- <ClientRouter /> -->
   </head>
   <body>
@@ -66,8 +67,9 @@ const seo = seoData || (data?.data as SeoProps);
       <slot />
     </main>
     <style is:global>
-      /*   Подключаем шрифты тут  */
+      /*   Подключаем шрифты тут или в глобальном стиле  */
     </style>
-    <!-- Подключаем метрику тут -->
+    {/* Подключаем метрику тут */}
+    {/* Не забываем подключить метрику через Partytown!!! attribute type="text/partytown" */}
   </body>
 </html>
