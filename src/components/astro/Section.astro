@@ -1,39 +1,21 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import { clsx } from "clsx";
-interface Props extends HTMLAttributes<"section"> {
+
+interface Props extends HTMLAttributes<"div"> {
+  yPadding?: string;
   className?: string;
-  paddings?: [number, number, number];
+  as?: "section" | "div" | "header" | "footer";
 }
 
-const { className, id, paddings = [6, 10, 14], ...props } = Astro.props;
+const {
+  as: Component = "section",
+  yPadding = "py-6 md:py-10 lg:py-12",
+  className,
+  ...props
+} = Astro.props as Props;
 ---
 
-<section id={id} class={clsx("w-full custom-section", className)} {...props}>
+<Component class={clsx("w-full custom-section", yPadding, className)} {...props}>
   <slot />
-</section>
-<style
-  define:vars={{
-    // tailwind-like paddings
-    p0: paddings[0] * 4 + "px",
-    p1: paddings[1] * 4 + "px",
-    p2: paddings[2] * 4 + "px",
-  }}
->
-  .custom-section {
-    max-width: var(--maxW);
-    padding: var(--p0) 0;
-  }
-
-  @media screen and (min-width: 768px) {
-    .custom-section {
-      padding: var(--p1) 0;
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    .custom-section {
-      padding: var(--p2) 0;
-    }
-  }
-</style>
+</Component>

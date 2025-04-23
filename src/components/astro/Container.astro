@@ -1,47 +1,32 @@
 ---
+import { cn } from "#/lib/utils";
 import type { HTMLAttributes } from "astro/types";
-import clsx from "clsx";
+
+const maxWidthClasses = {
+  xs: "max-w-xs",
+  sm: "max-w-sm",
+  md: "max-w-md",
+  lg: "max-w-lg",
+  xl: "max-w-7xl",
+  "2xl": "max-w-8xl",
+  full: "max-w-full",
+};
 
 interface Props extends HTMLAttributes<"div"> {
   className?: string;
-  paddings?: [number, number, number];
-  maxWidth?: number;
+  xPadding?: string;
+  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "full";
 }
 
 const {
-  className,
-  paddings = [6, 10, 14],
-  maxWidth = 1280,
+  children,
+  maxWidth = "xl",
+  xPadding = "px-4 sm:px-6 lg:px-8",
+  className = "",
   ...props
 } = Astro.props;
 ---
 
-<div class={clsx("mx-auto  w-full", "custom-container", className)} {...props}>
+<div class={cn("mx-auto  w-full", xPadding, maxWidthClasses[maxWidth], className)} {...props}>
   <slot />
 </div>
-<style
-  define:vars={{
-    // tailwind-like paddings
-    p0: paddings[0] * 4 + "px",
-    p1: paddings[1] * 4 + "px",
-    p2: paddings[2] * 4 + "px",
-    maxW: maxWidth + "px",
-  }}
->
-  .custom-container {
-    max-width: var(--maxW);
-    padding: 0 var(--p0);
-  }
-
-  @media screen and (min-width: 768px) {
-    .custom-container {
-      padding: 0 var(--p1);
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    .custom-container {
-      padding: 0 var(--p2);
-    }
-  }
-</style>
