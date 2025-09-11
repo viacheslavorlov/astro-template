@@ -1,12 +1,13 @@
 import mdx from "@astrojs/mdx";
-// import preact from "@astrojs/preact";
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
-
 import partytown from "@astrojs/partytown";
+import { loadEnv } from "vite";
+
+const { SITE_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +15,7 @@ export default defineConfig({
   security: {
     checkOrigin: true,
   },
-  // site: "http://astro-template.ru", // TODO
+  site: SITE_URL, // TODO
   integrations: [
     tailwind({
       applyBaseStyles: false,

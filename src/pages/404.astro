@@ -14,9 +14,9 @@ const { error } = Astro.props;
 <Layout title="Error page" description="error page">
   <Section>
     <Container>
-      <H>Ошибка: {error}</H>
-      <p>Что-то пошло не так, попробуйте перезагрузить страницу.</p>
-      <a href="/">Вернуться на главную</a>
+      <H>Что-то пошло не так, попробуйте перезагрузить страницу.</H>
+      <H level={"h2"}><a href="/">Вернуться на главную</a></H>
+      <p>Ошибка: {error}</p>
     </Container>
   </Section>
 </Layout>
