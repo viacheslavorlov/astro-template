@@ -28,7 +28,8 @@ const navigationMenuTriggerStyle =
           ) : (
             <button
               class={cn(navigationMenuTriggerStyle, "group flex items-center gap-1")}
-              aria-haspopup="true">
+              aria-haspopup="true"
+            >
               {item.title}
               <span class="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-200 group-hover:rotate-180">
                 <ChevronDown className="h-3 w-3" aria-hidden="true" />
@@ -41,7 +42,8 @@ const navigationMenuTriggerStyle =
                         href={nestedItem.href}
                         class={cn(
                           "block select-none space-y-1 text-nowrap rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                        )}>
+                        )}
+                      >
                         <div class="text-sm font-medium leading-none">{nestedItem.title}</div>
                       </a>
                     </li>

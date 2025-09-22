@@ -1,11 +1,8 @@
 ---
-import { getEntry } from "astro:content";
 import { AstroContainer, AstroSection } from "#/components/astro";
-import { ThemeSwitcher } from "#/components/shadcn/ThemeSwitcher";
+import DesktopMenu from "#/components/astro/DesktopMenu.astro";
 import { Seo } from "#/shared/seo";
 import "../styles/global.css";
-import { ClientRouter } from "astro:transitions";
-import DesktopMenu from "#/components/astro/DesktopMenu.astro";
 // import { DesktopMenu } from "#/components/custom-react/nav-menu";
 import { menuItems } from "#/shared/const/menu";
 import type { SeoProps } from "#/shared/types";
@@ -19,17 +16,13 @@ interface Props {
 }
 
 const { title, description, keywords, image, seoData } = Astro.props;
-
-const data = await getEntry("seo", "base");
-const seo = seoData || (data?.data as SeoProps);
 ---
 
 <!doctype html>
 <html lang="ru" class="w-full scroll-smooth">
   <head>
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <Seo {...seoData} />
+    <Seo title={title} description={description} image={image} />
     <script is:inline>
       const getThemePreference = () => {
         if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {

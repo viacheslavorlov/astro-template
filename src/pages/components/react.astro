@@ -1,14 +1,27 @@
 ---
 import Container from "#/components/astro/Container.astro";
 import Section from "#/components/astro/Section.astro";
+import { AutoplayCarousel } from "#/components/custom-react/autoplay-carousel";
 import Layout from "../../layouts/Layout.astro";
+
+const items = [
+  { id: 1, title: "Item 1" },
+  { id: 2, title: "Item 2" },
+  { id: 3, title: "Item 3" },
+  { id: 4, title: "Item 4" },
+];
 ---
 
 <Layout description="components" title="Components">
   <Section>
     <Container>
-      <h2>React</h2>
-      <p>React is a JavaScript library for building user interfaces.</p>
+      <h2>Shadcn autoscroll Carouse</h2>
+      <p>use autoplay or autoscroll</p>
+      <AutoplayCarousel client:only loop={true} items={items} autoscroll />
+
+      <h2>Shadcn autoplay Carouse</h2>
+      <p>use autoplay or autoscroll</p>
+      <AutoplayCarousel client:only loop={true} items={items} autoplay dots={{ enabled: true }} />
     </Container>
-  </Section>
-</Layout>
+  </Section></Layout
+>

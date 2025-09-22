@@ -51,33 +51,19 @@ export const rowVariants = cva("flex", {
   },
 });
 
-interface RowProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof rowVariants> {
+interface RowProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof rowVariants> {
   as?: "div" | "section" | "article";
 }
 
 export const Row = forwardRef<HTMLDivElement, RowProps>(
   (
-    {
-      className,
-      as: Component = "div",
-      direction,
-      justify,
-      align,
-      spacing,
-      wrap,
-      ...props
-    },
+    { className, as: Component = "div", direction, justify, align, spacing, wrap, ...props },
     ref,
   ) => {
     return (
       <Component
         ref={ref}
-        className={cn(
-          rowVariants({ direction, justify, align, spacing, wrap }),
-          className,
-        )}
+        className={cn(rowVariants({ direction, justify, align, spacing, wrap }), className)}
         {...props}
       />
     );

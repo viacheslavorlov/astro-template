@@ -5,23 +5,11 @@ import { cn } from "#/lib/utils";
 
 type Props = {
   className?: string;
-  variant?:
-    | "default"
-    | "destructive"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | "link"
-    | undefined;
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | undefined;
   size?: "sm" | "icon" | "lg" | "default";
 } & HTMLAttributes<"button">;
 
-const {
-  variant = "default",
-  size = "default",
-  className,
-  ...rest
-} = Astro.props;
+const { variant = "default", size = "default", className, ...rest } = Astro.props;
 
 const classes = cn(buttonVariants({ variant, size, className }));
 ---

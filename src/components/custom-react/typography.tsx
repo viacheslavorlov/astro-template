@@ -32,16 +32,9 @@ interface HeadingProps
 }
 
 export const H = forwardRef<HTMLHeadingElement, HeadingProps>(
-  (
-    { className, as: Component = "h2", level, margin, children, ...props },
-    ref,
-  ) => {
+  ({ className, as: Component = "h2", level, margin, children, ...props }, ref) => {
     return (
-      <Component
-        ref={ref}
-        className={cn(headingVariants({ level, margin }), className)}
-        {...props}
-      >
+      <Component ref={ref} className={cn(headingVariants({ level, margin }), className)} {...props}>
         {children}
       </Component>
     );
@@ -89,10 +82,7 @@ interface ParagraphProps
 }
 
 export const P = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  (
-    { className, as: Component = "p", size, leading, margin, align, ...props },
-    ref,
-  ) => {
+  ({ className, as: Component = "p", size, leading, margin, align, ...props }, ref) => {
     return (
       <Component
         ref={ref}

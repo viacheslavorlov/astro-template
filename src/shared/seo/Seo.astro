@@ -1,40 +1,27 @@
 ---
-import type { SeoProps } from "../types";
+import { SITE_CONFIG } from "#/config/site";
 
-// In content/seo/base.md
-type Props = SeoProps;
+type Props = {
+  title?: string;
+  description?: string;
+  image?: string;
+};
 
-const {
-  title,
-  favicon = "./favicon.ico",
-  description,
-  keywords,
-  author,
-  ogType = "website",
-  image,
-  ogUrl,
-} = Astro.props;
+const { title, description, image } = Astro.props;
 
-const baseUrl = Astro.site ?? Astro.url;
-const defaultCanonicalUrl = new URL(
-  Astro.url.pathname + Astro.url.search,
-  baseUrl,
-);
+const baseUrl = Astro.site ?? SITE_CONFIG.baseUrl;
+const canonicalUrl = new URL(Astro.url.pathname + Astro.url.search, baseUrl);
 ---
 
-<!-- Required Meta Tags -->
-<title>{title}</title>
-<link rel="icon" type="image/png" href={favicon} />
-<meta name="description" content={description} />
-<link rel="canonical" href={defaultCanonicalUrl.href} />
-<meta charset="UTF-8" />
-<!-- Optional Meta Tags for SEO -->
-{keywords && <meta name="keywords" content={keywords} />}
-{author && <meta name="author" content={author} />}
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="viewport" content="width=device-width" />
+<title>{title ? title : SITE_CONFIG.title}</title>
+<meta name="description" content={description || SITE_CONFIG.description} />
+<link rel="canonical" href={canonicalUrl} />
 
-<!-- Open Graph Meta Tags -->
-<meta property="og:title" content={title || ""} />
-<meta property="og:description" content={description || ""} />
-<meta property="og:type" content={ogType || ""} />
-{image && <meta property="og:image" content={image} />}
-{ogUrl && <meta property="og:url" content={ogUrl} />}
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title || SITE_CONFIG.title} />
+<meta property="og:description" content={description || SITE_CONFIG.description} />
+<meta property="og:image" content={image || `${SITE_CONFIG?.baseUrl}/og-image.jpg`} />
