@@ -1,7 +1,9 @@
 ---
 import Container from "#/components/astro/Container.astro";
 import Section from "#/components/astro/Section.astro";
+import { AccordionCustom } from "#/components/custom-react/accordion-custom";
 import { AutoplayCarousel } from "#/components/custom-react/autoplay-carousel";
+import { H } from "#/components/custom-react/typography";
 import Layout from "../../layouts/Layout.astro";
 
 const items = [
@@ -15,11 +17,17 @@ const items = [
 <Layout description="components" title="Components">
   <Section>
     <Container>
-      <h2>Shadcn autoscroll Carouse</h2>
+      <H>Accordion</H>
+      <AccordionCustom client:load />
+    </Container>
+  </Section>
+  <Section>
+    <Container>
+      <H>Shadcn autoscroll Carouse</H>
       <p>use autoplay or autoscroll</p>
       <AutoplayCarousel client:only loop={true} items={items} autoscroll />
 
-      <h2>Shadcn autoplay Carouse</h2>
+      <H>Shadcn autoplay Carouse</H>
       <p>use autoplay or autoscroll</p>
       <AutoplayCarousel client:only loop={true} items={items} autoplay dots={{ enabled: true }} />
     </Container>

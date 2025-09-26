@@ -57,12 +57,17 @@ export const colVariants = cva("flex flex-col", {
   },
 });
 
-interface ColProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof colVariants> {
+interface ColProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof colVariants> {
   as?: "div" | "section" | "article";
 }
 
 export const Col = forwardRef<HTMLDivElement, ColProps>(
-  ({ className, as: Component = "div", span, adaptive, padding, ...props }, ref) => {
+  (
+    { className, as: Component = "div", span, adaptive, padding, ...props },
+    ref,
+  ) => {
     return (
       <Component
         ref={ref}

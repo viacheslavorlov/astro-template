@@ -25,6 +25,10 @@ export const Container = ({
   };
 
   return (
-    <div className={cn("mx-auto", maxWidthClasses[maxWidth], xPadding, className)}>{children}</div>
+    <div
+      className={cn("mx-auto", maxWidthClasses[maxWidth], xPadding, className)}
+    >
+      {children}
+    </div>
   );
 };

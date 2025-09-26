@@ -48,7 +48,8 @@ export default defineConfig({
           return result.html;
         },
       },
-      process.env.NODE_ENV === "production" && removeConsole({ externalValues: ["error", "warn"] }),
+      process.env.NODE_ENV === "production" &&
+        removeConsole({ externalValues: ["error", "warn"] }),
     ],
     build: {
       terserOptions: {

@@ -7,7 +7,11 @@ interface MarqueeProps {
   animationDuration?: number; //seconds
 }
 
-export const Marquee: React.FC<MarqueeProps> = ({ words, className, animationDuration = 7 }) => {
+export const Marquee: React.FC<MarqueeProps> = ({
+  words,
+  className,
+  animationDuration = 7,
+}) => {
   // Дублируем массив слов для бесшовной анимации
   const doubledWords = [...words, ...words];
 
@@ -17,7 +21,10 @@ export const Marquee: React.FC<MarqueeProps> = ({ words, className, animationDur
         style={{
           animationDuration: `${animationDuration}s`,
         }}
-        className={clsx("flex w-fit whitespace-nowrap text-background", classes.marquee)}
+        className={clsx(
+          "flex w-fit whitespace-nowrap text-background",
+          classes.marquee,
+        )}
       >
         {doubledWords.map((word, index) => (
           <span

@@ -82,7 +82,14 @@ interface CarouselDotsProps {
  * Provides visual indicators and direct navigation to specific slides
  */
 const CarouselDots: React.FC<CarouselDotsProps> = React.memo(
-  ({ items, api, current, className = "", dotClassName = "", activeDotClassName = "" }) => {
+  ({
+    items,
+    api,
+    current,
+    className = "",
+    dotClassName = "",
+    activeDotClassName = "",
+  }) => {
     if (!api || items.length <= 1) return null;
 
     const handleDotClick = (index: number) => {
@@ -204,7 +211,11 @@ export function AutoplayCarousel({
 
   // Default item renderer
   const defaultRenderItem = (item: CarouselItem, index: number) => (
-    <ItemComponent title={item.title} id={item.id} isActive={currentSlide === index} />
+    <ItemComponent
+      title={item.title}
+      id={item.id}
+      isActive={currentSlide === index}
+    />
   );
 
   const itemRenderer = renderItem || defaultRenderItem;
@@ -223,7 +234,10 @@ export function AutoplayCarousel({
       >
         <CarouselContent>
           {items.map((item, index) => (
-            <CarouselItem key={item.id} className="basis-full md:basis-1/2 lg:basis-1/3">
+            <CarouselItem
+              key={item.id}
+              className="basis-full md:basis-1/2 lg:basis-1/3"
+            >
               {itemRenderer(item, index)}
             </CarouselItem>
           ))}
@@ -264,21 +278,23 @@ interface ItemComponentProps {
  * Default carousel item component
  * Can be overridden using the renderItem prop
  */
-export const ItemComponent = React.memo(({ title, id, isActive = false }: ItemComponentProps) => (
-  <div
-    className={`flex h-48 items-center justify-center rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 transition-all duration-300 ${isActive ? "scale-95 shadow-lg" : "scale-90 shadow-md"} `}
-    style={{
-      minHeight: "200px",
-    }}
-  >
-    <div className="p-4 text-center">
-      <h3 className="mb-2 text-xl font-semibold text-gray-800">{title}</h3>
-      <span className="text-gray-600">Index: {id}</span>
-      {isActive && (
-        <div className="absolute right-2 top-2 h-3 w-3 animate-pulse rounded-full bg-green-500" />
-      )}
+export const ItemComponent = React.memo(
+  ({ title, id, isActive = false }: ItemComponentProps) => (
+    <div
+      className={`flex h-48 items-center justify-center rounded-lg border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 transition-all duration-300 ${isActive ? "scale-95 shadow-lg" : "scale-90 shadow-md"} `}
+      style={{
+        minHeight: "200px",
+      }}
+    >
+      <div className="p-4 text-center">
+        <h3 className="mb-2 text-xl font-semibold text-gray-800">{title}</h3>
+        <span className="text-gray-600">Index: {id}</span>
+        {isActive && (
+          <div className="absolute right-2 top-2 h-3 w-3 animate-pulse rounded-full bg-green-500" />
+        )}
+      </div>
     </div>
-  </div>
-));
+  ),
+);
 
 ItemComponent.displayName = "ItemComponent";
