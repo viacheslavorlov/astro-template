@@ -16,5 +16,8 @@
     "ui": "#/components/shadcn",
     "lib": "#/lib",
     "hooks": "#/hooks"
+  },
+  "registries": {
+    "@vi-dev": "http://localhost:3000/r/{name}.json"
   }
 }
