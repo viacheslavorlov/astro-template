@@ -6,14 +6,14 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 FROM base AS prod-deps
-RUN npm install --omit=dev
+RUN pnpm install --prod
 
 FROM base AS build-deps
-RUN npm install
+RUN pnpm install
 
 FROM build-deps AS build
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 FROM base AS runtime
 COPY --from=prod-deps /app/node_modules ./node_modules

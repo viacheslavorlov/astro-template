@@ -1,15 +1,15 @@
 import * as React from "react";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
-  type CarouselApi,
+  CarouselPrevious,
 } from "../shadcn/carousel";
 
-import Autoplay from "embla-carousel-autoplay";
 import AutoScroll from "embla-carousel-auto-scroll";
+import Autoplay from "embla-carousel-autoplay";
 
 // ===== TYPES AND INTERFACES =====
 type CarouselItem = {

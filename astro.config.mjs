@@ -1,14 +1,14 @@
 import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
+import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import { defineConfig } from "astro/config";
-import partytown from "@astrojs/partytown";
-import removeConsole from "vite-plugin-remove-console";
+import { defineConfig, envField } from "astro/config";
 import { loadEnv } from "vite";
+import removeConsole from "vite-plugin-remove-console";
 
-const { SITE_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const { SITE_URL, PORT } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +16,56 @@ export default defineConfig({
   security: {
     checkOrigin: true,
   },
-  site: SITE_URL, // TODO
+  env: {
+    schema: {
+      SITE_URL: envField.string({
+        access: "public",
+        default: "http://localhost:4321",
+        context: "client",
+        optional: false,
+      }),
+      PORT: envField.number({
+        context: "server",
+        access: "public",
+        default: 4321,
+      }),
+      PUBLIC_STRAPI_URL: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+      }),
+      STRAPI_URL: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      API_KEY: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      TOKEN_BOT: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      CHAT_ID: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+    },
+  },
+  server: {
+    port: Number.parseInt(PORT),
+    headers: {
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    },
+  },
+  site: SITE_URL,
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -29,7 +78,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
     partytown({
-      // Example: Disable debug mode.
+      // Disable debug mode.
       config: { debug: false },
     }),
   ],
@@ -49,7 +98,7 @@ export default defineConfig({
         },
       },
       process.env.NODE_ENV === "production" &&
-        removeConsole({ externalValues: ["error", "warn"] }),
+        removeConsole({ externalValues: ["error", "warn", "log"] }),
     ],
     build: {
       terserOptions: {

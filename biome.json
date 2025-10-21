@@ -1,5 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
@@ -20,6 +21,7 @@
     "ignore": [
       "**/*.min.js",
       "node_modules",
+      "dist",
       ".vscode",
       "./pnpm-lock.yaml",
       "./pnpm-workspace.yaml"

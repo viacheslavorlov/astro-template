@@ -1,12 +1,12 @@
 import { Section } from "lucide-react";
-import { Container } from "./container";
-import { P, H, paragraphVariants, headingVariants } from "./typography";
-import { If } from "./if";
 import { Col } from "./col";
-import { Row } from "./row";
-import { DesktopMenu } from "./nav-menu";
-import { Video } from "./video";
+import { Container } from "./container";
+import { If } from "./if";
 import { LazyRender } from "./lazy-render";
+import { DesktopMenu } from "./nav-menu";
+import { Row } from "./row";
+import { H, P, headingVariants, paragraphVariants } from "./typography";
+import { Video } from "./video";
 
 export {
   Section,

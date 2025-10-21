@@ -3,6 +3,13 @@ import type { HTMLAttributes } from "astro/types";
 import { buttonVariants } from "#/components/shadcn/button";
 import { cn } from "#/lib/utils";
 
+/**
+ * @typedef {object} Props
+ * @property {string} [className] - Additional CSS classes to apply to the button.
+ * @property {'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'} [variant='default'] - The visual style of the button.
+ * @property {'sm' | 'icon' | 'lg' | 'default'} [size='default'] - The size of the button.
+ * @property {HTMLAttributes<'button'>} [rest] - Standard HTML button attributes.
+ */
 type Props = {
   className?: string;
   variant?:

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { GitCompareArrowsIcon } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,8 +14,6 @@ import {
 } from "#/components/shadcn/navigation-menu";
 import { cn } from "#/lib/utils";
 import type { MenuItem } from "#/shared/types";
-import { GitCompareArrowsIcon } from "lucide-react";
-import { ThemeSwitcher } from "../shadcn/ThemeSwitcher";
 
 export function DesktopMenu({ config }: { config: MenuItem[] }) {
   return (
@@ -60,8 +59,6 @@ export function DesktopMenu({ config }: { config: MenuItem[] }) {
             </NavigationMenuItem>
           );
         })}
-
-        <ThemeSwitcher className="ml-auto" />
       </NavigationMenuList>
     </NavigationMenu>
   );

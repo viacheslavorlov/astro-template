@@ -10,4 +10,4 @@ const { className, ...props } = Astro.props;
 // SET TAILWIND CLASSES INTO CLSX
 ---
 
-<input class={clsx("", className)} {...props} />
+<input class={clsx(className)} {...props} />
