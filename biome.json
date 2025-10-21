@@ -5,14 +5,21 @@
     "enabled": true,
     "indentStyle": "space",
     "lineWidth": 80,
+    "indentSize": 2,
+    "attributePosition": "multiline",
+    "bracketSpacing": true,
+    "lineEnding": "lf",
+    "useEditorconfig": true,
     "ignore": [
       "**/*.min.js",
       "node_modules",
+      "dist",
       ".vscode",
       "./pnpm-lock.yaml",
       "./pnpm-workspace.yaml"
     ]
   },
+
   "linter": {
     "enabled": true,
     "rules": {

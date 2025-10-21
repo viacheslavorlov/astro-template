@@ -27,11 +27,10 @@ const { title, description, keywords, image, seoData } = Astro.props;
     <ClientRouter />
   </head>
   <body>
-    <header transition:persist>
+    <header>
       <AstroSection>
         <AstroContainer>
-          <!-- <DesktopMenu config={menuItems} client:load /> -->
-          <DesktopMenu config={menuItems} />
+          <DesktopMenu config={menuItems} transition:persist/>
         </AstroContainer>
       </AstroSection>
     </header>

@@ -1,4 +1,4 @@
-# Gemini Project Context: Astro Template
+# Astro Template
 
 ## Project Overview
 

@@ -1,6 +1,7 @@
 import qs from "qs";
 //@ts-ignore
 import type { components, paths } from "#/types/strapi/strapi"; // create types by `npm run types:generate`
+import { PUBLIC_STRAPI_URL } from "astro:env/client";
 
 interface Query {
   /** @description Sort by attributes ascending (asc) or descending (desc) */
@@ -61,7 +62,7 @@ export default async function fetchApi<retu>({
   }
 
   const url = new URL(
-    `${import.meta.env.PUBLIC_STRAPI_URL}/api/${endpoint as string}`,
+    `${PUBLIC_STRAPI_URL}/api/${endpoint as string}`,
   );
   let fullUrl: string | undefined;
   if (query) {
