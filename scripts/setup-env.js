@@ -24,3 +24,8 @@ if (!fs.existsSync(envPath)) {
     "ℹ️ .env file already exists. Skipping creation.",
   );
 }
+
+console.log(
+  "\x1b[36m%s\x1b[0m",
+  "💡 To use a local CMS, run `pnpm run cms:init` to initialize Keystatic.",
+);

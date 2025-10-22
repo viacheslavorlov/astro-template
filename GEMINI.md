@@ -32,7 +32,15 @@ The project uses `pnpm` for package management.
     ```
     This will also trigger the `postinstall` script, which creates a `.env` file from `.env.example`.
 
-2.  **Configure Environment**:
+2.  **Install Keystatic CMS**:
+
+    After installing the dependencies, you can install Keystatic CMS by running the following command:
+
+    ```bash
+    pnpm run cms:init
+    ```
+
+3.  **Configure Environment**:
     Open the newly created `.env` file and fill in the required environment variables, such as `SITE_URL` and any Strapi-related keys.
 
 ### Development
@@ -83,3 +91,29 @@ The project uses `pnpm` for package management.
 *   **Component Structure**: Components are organized by framework (`astro`, `custom-react`, `shadcn`). Shared utilities, constants, and types are located in the `src/shared` directory.
 *   **Environment Variables**: All secret keys and environment-specific settings should be stored in the `.env` file. The `astro.config.mjs` file defines the schema for these variables, making them accessible in a type-safe way via `import.meta.env`.
 *   **API Interaction**: For interacting with the Strapi API, use the `fetchApi` utility located at `src/shared/lib/strapi.ts`.
+
+*   **Keystatic CMS**: This project has pre-configured tools for integrating with Keystatic CMS. For more information, see the section below.
+
+## Keystatic CMS
+
+[Keystatic](https://keystatic.com/) is a new project that is still in its early stages of development. It is a powerful tool that can be used to manage content for your Astro project.
+
+### Installation
+
+To get started, you need to install the Keystatic CLI. You can do this by running the following command:
+
+```bash
+pnpm run cms:init
+```
+
+This will create a new `keystatic.config.ts` file in your project's root directory. This file will contain the basic configuration for your CMS.
+
+### Starting the CMS
+
+To start the CMS, run the following command:
+
+```bash
+pnpm run cms
+```
+
+This will start the CMS on `http://localhost:4321/admin`. You can then access the CMS by navigating to this URL in your browser.

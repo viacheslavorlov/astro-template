@@ -12,6 +12,8 @@
     "prettier": "prettier --write .",
     "format": "biome format --write .",
     "lint:fix": "biome check --write .",
+    "cms": "keystatic",
+    "cms:init": "keystatic init",
     "postinstall": "node scripts/setup-env.js"
   },
   "dependencies": {
@@ -24,6 +26,8 @@
     "@astrojs/tailwind": "6.0.2",
     "@astrojs/ts-plugin": "^1.10.5",
     "@hookform/resolvers": "^3.10.0",
+    "@keystatic/astro": "^5.0.0",
+    "@keystatic/core": "^0.5.10",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
     "@radix-ui/react-avatar": "^1.1.10",

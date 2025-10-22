@@ -1,3 +1,4 @@
+import keystatic from "@keystatic/astro";
 import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
 import partytown from "@astrojs/partytown";
@@ -8,7 +9,7 @@ import { defineConfig, envField } from "astro/config";
 import { loadEnv } from "vite";
 import removeConsole from "vite-plugin-remove-console";
 
-const { SITE_URL, PORT } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const { SITE_URL, PORT, NODE_ENV } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
@@ -67,6 +68,7 @@ export default defineConfig({
   },
   site: SITE_URL,
   integrations: [
+    ...(process.env.NODE_ENV === "production" ? [] : [keystatic()]),
     tailwind({
       applyBaseStyles: false,
     }),
