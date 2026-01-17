@@ -1,5 +1,6 @@
 ---
-import { AstroContainer, AstroSection } from "#/components/astro";
+import AstroSection from "../components/astro/Section.astro";
+import AstroContainer from "../components/astro/Container.astro";
 import DesktopMenu from "#/components/astro/DesktopMenu.astro";
 import { Seo } from "#/shared/seo";
 import "../styles/global.css";
@@ -30,7 +31,7 @@ const { title, description, keywords, image, seoData } = Astro.props;
     <header>
       <AstroSection>
         <AstroContainer>
-          <DesktopMenu config={menuItems} transition:persist/>
+          <DesktopMenu config={menuItems} transition:persist />
         </AstroContainer>
       </AstroSection>
     </header>
