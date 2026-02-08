@@ -2,6 +2,11 @@
 import AstroSection from "../components/astro/Section.astro";
 import AstroContainer from "../components/astro/Container.astro";
 import Layout from "../layouts/Layout.astro";
+
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, s-maxage=60, stale-while-revalidate=60",
+);
 ---
 
 <Layout title="Welcome to Astro." description="">

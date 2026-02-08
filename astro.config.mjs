@@ -9,13 +9,31 @@ import { defineConfig, envField } from "astro/config";
 import { loadEnv } from "vite";
 import removeConsole from "vite-plugin-remove-console";
 
-const { SITE_URL, PORT, NODE_ENV } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const { SITE_URL, PORT, NODE_ENV, DOMAIN } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
   output: "server",
+  prefetch: {
+    defaultStrategy: 'hover',
+  },
+  devToolbar: {
+    enabled: false,
+  },
   security: {
     checkOrigin: true,
+    allowedDomains: [
+      {
+        hostname: 'localhost',
+        protocol: 'http',
+        port: '4321'
+      },
+      {
+        hostname: DOMAIN,
+        protocol: 'https',
+        port: '443'
+      }
+    ],
   },
   env: {
     schema: {
@@ -67,6 +85,7 @@ export default defineConfig({
     },
   },
   site: SITE_URL,
+  build: { inlineStylesheets: 'always', },
   integrations: [
     ...(process.env.NODE_ENV === "production" ? [] : [keystatic()]),
     tailwind({
@@ -100,7 +119,7 @@ export default defineConfig({
         },
       },
       process.env.NODE_ENV === "production" &&
-        removeConsole({ externalValues: ["error", "warn", "log"] }),
+      removeConsole({ externalValues: ["error", "warn", "log"] }),
     ],
     build: {
       terserOptions: {

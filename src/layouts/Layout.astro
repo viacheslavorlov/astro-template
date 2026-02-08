@@ -8,23 +8,30 @@ import { ClientRouter } from "astro:transitions";
 // import { DesktopMenu } from "#/components/custom-react/nav-menu";
 import { menuItems } from "#/shared/const/menu";
 import type { SeoProps } from "#/shared/types";
+import { getEntry } from "astro:content";
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   keywords?: string | string[];
   image?: string;
   seoData?: SeoProps;
 }
 
 const { title, description, keywords, image, seoData } = Astro.props;
+
+const seo = await getEntry("seo", "base");
 ---
 
 <!doctype html>
 <html lang="ru" class="w-full scroll-smooth" transition:persist>
   <head>
     <meta name="viewport" content="width=device-width" />
-    <Seo title={title} description={description} image={image} />
+    <Seo
+      title={seo?.data.title || title}
+      description={seo?.data.description || description}
+      image={image}
+    />
     <ClientRouter />
   </head>
   <body>
