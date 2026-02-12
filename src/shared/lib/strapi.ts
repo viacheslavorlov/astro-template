@@ -1,11 +1,11 @@
+import { PUBLIC_STRAPI_URL } from "astro:env/client";
 import qs from "qs";
 //@ts-ignore
 import type { components, paths } from "#/types/strapi/strapi"; // create types by `npm run types:generate`
-import { PUBLIC_STRAPI_URL } from "astro:env/client";
 
 interface Query {
   /** @description Sort by attributes ascending (asc) or descending (desc) */
-  sort?: string;
+  sort?: string | string[];
   /** @description Return page/pageSize (default: true) */
   "pagination[withCount]"?: boolean;
   /** @description Page number (default: 0) */
@@ -17,26 +17,26 @@ interface Query {
   /** @description Number of entities to return (default: 25) */
   "pagination[limit]"?: number;
   /** @description Fields to return (ex: title,author) */
-  fields?: string;
+  fields?: string | string[];
   /** @description Relations to return */
-  populate?: string | string[];
+  populate?: string | string[] | object;
   /** @description Filters to apply */
   filters?: {
     [key: string]: unknown;
   };
   /** @description Locale to apply */
   locale?: string;
+  /** @description Publication state: live or preview */
+  publicationState?: "live" | "preview";
 }
 
-interface Props {
-  endpoint: keyof paths;
+interface Props<T> {
+  endpoint: keyof paths | string;
   query?: Query;
   wrappedByKey?: string;
   wrappedByList?: boolean;
   token?: string;
 }
-
-type retu = ({} & keyof components["schemas"]) | components["schemas"];
 
 /**
  * Fetches data from the Strapi API
@@ -47,46 +47,63 @@ type retu = ({} & keyof components["schemas"]) | components["schemas"];
  * @param token - if token exist Bearer authorization continues
  * @returns
  */
-export default async function fetchApi<retu>({
+export default async function fetchApi<T>({
   endpoint,
   query,
   wrappedByKey,
   wrappedByList,
   token,
-}: Props): Promise<retu> {
+}: Props<T>): Promise<T> {
   if (typeof endpoint === "symbol")
-    throw new Error("Endpoin is a simbol [Symbol]");
-  if (typeof endpoint === "number") throw new Error("Endpoin is a Number");
-  if (endpoint.startsWith("/")) {
-    endpoint = endpoint.slice(1) as Props["endpoint"];
+    throw new Error("Endpoint is a symbol [Symbol]");
+  if (typeof endpoint === "number") throw new Error("Endpoint is a Number");
+
+  let cleanEndpoint = endpoint as string;
+  if (cleanEndpoint.startsWith("/")) {
+    cleanEndpoint = cleanEndpoint.slice(1);
   }
 
-  const url = new URL(`${PUBLIC_STRAPI_URL}/api/${endpoint as string}`);
-  let fullUrl: string | undefined;
+  const baseUrl = PUBLIC_STRAPI_URL || "";
+  const url = new URL(`${baseUrl}/api/${cleanEndpoint}`);
+
+  let fullUrl = url.toString();
+
   if (query) {
-    fullUrl = `${url.toString()}?${qs.stringify(query, {
+    const queryString = qs.stringify(query, {
       encodeValuesOnly: true,
       charset: "utf-8", // prettify URL
-    })}`;
-    // Object.entries(query).forEach(([key, value]) => {
-    //   url.searchParams.append(key, value);
-    // });
+    });
+    fullUrl = `${fullUrl}?${queryString}`;
   }
-  const headers = {
-    "Content-type": "application/json",
+
+  const headers: HeadersInit = {
+    "Content-Type": "application/json",
   };
-  if (token) Object.assign(headers, { Authorization: `Bearer ${token}` });
 
-  const res = await fetch((fullUrl || url).toString(), { headers });
-  let data = await res.json();
-
-  if (wrappedByKey) {
-    data = data[wrappedByKey];
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
   }
 
-  if (wrappedByList) {
-    data = data[0];
-  }
+  try {
+    const res = await fetch(fullUrl, { headers });
 
-  return data as retu;
+    if (!res.ok) {
+      throw new Error(`Strapi API error: ${res.status} ${res.statusText}`);
+    }
+
+    let data = await res.json();
+
+    if (wrappedByKey && data) {
+      data = data[wrappedByKey];
+    }
+
+    if (wrappedByList && Array.isArray(data) && data.length > 0) {
+      data = data[0];
+    }
+
+    return data as T;
+  } catch (error) {
+    console.error(`Error fetching from Strapi (${endpoint}):`, error);
+    throw error;
+  }
 }
