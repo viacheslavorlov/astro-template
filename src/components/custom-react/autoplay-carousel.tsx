@@ -12,7 +12,7 @@ import AutoScroll from "embla-carousel-auto-scroll";
 import Autoplay from "embla-carousel-autoplay";
 
 // ===== TYPES AND INTERFACES =====
-type CarouselItem = {
+type CarouselItemType = {
   id: number;
   title: string;
   /** Optional custom content component */
@@ -32,7 +32,7 @@ type NavigationDotsProps = {
 
 type ReusableCarouselProps = {
   /** Array of carousel items to display */
-  items: CarouselItem[];
+  items: CarouselItemType[];
   /** Additional CSS class names */
   className?: string;
   /** Enable infinite loop */
@@ -56,7 +56,8 @@ type ReusableCarouselProps = {
   /** Carousel orientation */
   orientation?: "horizontal" | "vertical";
   /** Additional embla carousel plugins */
-  plugins?: any[];
+  // @ts-ignore : plugins - any
+  plugins?: any;
   /** Callback when slide changes */
   onSlideChange?: (index: number) => void;
   /** Navigation dots configuration */
@@ -64,12 +65,12 @@ type ReusableCarouselProps = {
   /** Hide previous/next buttons */
   hideNavigationButtons?: boolean;
   /** Custom item renderer */
-  renderItem?: (item: CarouselItem, index: number) => React.ReactNode;
+  renderItem?: (item: CarouselItemType, index: number) => React.ReactNode;
 };
 
 // ===== NAVIGATION DOTS COMPONENT =====
 interface CarouselDotsProps {
-  items: CarouselItem[];
+  items: CarouselItemType[];
   api: CarouselApi | null;
   current: number;
   className?: string;
@@ -100,7 +101,8 @@ const CarouselDots: React.FC<CarouselDotsProps> = React.memo(
       <div className={`mt-4 flex justify-center space-x-2 ${className}`}>
         {items.map((_, index) => (
           <button
-            key={index}
+            key={`dot-${index}`}
+            type="button"
             onClick={() => handleDotClick(index)}
             className={`h-3 w-3 rounded-full transition-all duration-300 focus:outline-none ${
               current === index
@@ -210,7 +212,7 @@ export function AutoplayCarousel({
   }, [autoplay, autoscroll, plugins]);
 
   // Default item renderer
-  const defaultRenderItem = (item: CarouselItem, index: number) => (
+  const defaultRenderItem = (item: CarouselItemType, index: number) => (
     <ItemComponent
       title={item.title}
       id={item.id}
