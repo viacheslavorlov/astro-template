@@ -17,7 +17,10 @@ export const Section = ({
   as: Component = "section",
 }: SectionProps) => {
   return (
-    <Component id={id} className={cn(`w-full ${yPadding} ${className}`)}>
+    <Component
+      id={id}
+      className={cn(`w-full ${yPadding} ${className}`)}
+    >
       {children}
     </Component>
   );

@@ -35,7 +35,10 @@ export function DesktopMenu({ config }: { config: MenuItem[] }) {
             return (
               <NavigationMenuItem key={item.title}>
                 <NavigationMenuLink asChild>
-                  <a href={item.href} className={navigationMenuTriggerStyle()}>
+                  <a
+                    href={item.href}
+                    className={navigationMenuTriggerStyle()}
+                  >
                     {item.title}
                   </a>
                 </NavigationMenuLink>

@@ -61,9 +61,7 @@ export default async function fetchApi<retu>({
     endpoint = endpoint.slice(1) as Props["endpoint"];
   }
 
-  const url = new URL(
-    `${PUBLIC_STRAPI_URL}/api/${endpoint as string}`,
-  );
+  const url = new URL(`${PUBLIC_STRAPI_URL}/api/${endpoint as string}`);
   let fullUrl: string | undefined;
   if (query) {
     fullUrl = `${url.toString()}?${qs.stringify(query, {

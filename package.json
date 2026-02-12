@@ -14,7 +14,8 @@
     "lint:fix": "biome check --write .",
     "cms": "keystatic",
     "cms:init": "keystatic init",
-    "postinstall": "node scripts/setup-env.js"
+    "postinstall": "node scripts/setup-env.js",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -71,6 +72,8 @@
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
     "htmlnano": "^2.1.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "openapi-typescript": "^7.10.1",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
@@ -79,5 +82,8 @@
     "vite": "^7.3.1",
     "vite-plugin-remove-console": "^2.2.0"
   },
-  "packageManager": "pnpm@10.17.0+sha512.fce8a3dd29a4ed2ec566fb53efbb04d8c44a0f05bc6f24a73046910fb9c3ce7afa35a0980500668fa3573345bd644644fa98338fa168235c80f4aa17aa17fbef"
+  "packageManager": "pnpm@10.17.0+sha512.fce8a3dd29a4ed2ec566fb53efbb04d8c44a0f05bc6f24a73046910fb9c3ce7afa35a0980500668fa3573345bd644644fa98338fa168235c80f4aa17aa17fbef",
+  "lint-staged": {
+    "*.{ts,tsx,astro,json,md,yaml,yml}": ["biome format --write"]
+  }
 }

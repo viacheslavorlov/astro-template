@@ -30,7 +30,10 @@ export function Video({
       preload={preload}
       loop={loop}
     >
-      <source src={src as string} type={type || "video/mp4"} />
+      <source
+        src={src as string}
+        type={type || "video/mp4"}
+      />
       Не работает
     </video>
   );
