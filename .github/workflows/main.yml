@@ -65,10 +65,15 @@ jobs:
     - name: Build project
       run: pnpm run build
 
-    - name: Deploy to Vercel
-      uses: amondnet/vercel-action@v25
+    - name: Setup SSH key
+      uses: webfactory/ssh-agent@v0.9.4
       with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        vercel-args: '--prod'
+        ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+    - name: Deploy to remote server
+      run: |
+        rsync -avz --delete \
+          --exclude '.git' \
+          --exclude 'node_modules' \
+          --exclude 'dist/.cache' \
+          ./dist/ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}
