@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Deployment script for my application
 # Usage: ./deploy.sh
 
