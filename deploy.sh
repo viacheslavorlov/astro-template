@@ -2,6 +2,9 @@
 # Deployment script for my application
 # Usage: ./deploy.sh
 
+# Source the user's profile to get the correct PATH
+source ~/.zshrc 2>/dev/null || source ~/.bash_profile 2>/dev/null || source ~/.profile 2>/dev/null
+
 set -e  # Exit immediately if any command fails
 
 # Configuration
@@ -23,12 +26,12 @@ echo "✅ Git pull completed."
 
 # Install dependencies
 echo "📦 Installing dependencies with pnpm..."
-pnpm install
+/home/vi-dev/.nvm/versions/node/v22.11.0/bin/pnpm install
 echo "✅ pnpm install completed."
 
 # Build the project
 echo "🔨 Building project..."
-pnpm run build
+/home/vi-dev/.nvm/versions/node/v22.11.0/bin/pnpm run build
 echo "✅ Build completed."
 
 # Stop the current PM2 process (if running)
