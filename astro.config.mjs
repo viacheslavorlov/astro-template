@@ -50,7 +50,7 @@ export default defineConfig({
       PORT: envField.number({
         context: "server",
         access: "public",
-        default: 4321,
+        default: 4422,
       }),
       PUBLIC_STRAPI_URL: envField.string({
         context: "client",
@@ -123,7 +123,7 @@ export default defineConfig({
         },
       },
       process.env.NODE_ENV === "production" &&
-        removeConsole({ externalValues: ["error", "warn", "log"] }),
+      removeConsole({ externalValues: ["error", "warn", "log"] }),
     ],
     build: {
       terserOptions: {
