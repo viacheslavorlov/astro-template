@@ -15,7 +15,7 @@ This is a comprehensive starter template for building websites with [Astro](http
     *   Vite is configured to minify HTML and remove console logs in production builds.
 *   **Tooling & Conventions**:
     *   The project uses `pnpm` as the package manager.
-    *   Code formatting and linting are handled by [Biome](https://biomejs.dev/) or [Prettier](https://prettier.io/).
+    *   Code formatting and linting are handled by [Biome](https://biomejs.dev/) andr [Prettier](https://prettier.io/).
     *   TypeScript is used throughout the project.
     *   Path aliases (e.g., `#/components/...`) are configured for cleaner imports.
     *   Environment variables are managed through a `.env` file, which is generated from `.env.example` on the first setup.
