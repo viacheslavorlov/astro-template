@@ -50,7 +50,7 @@ export default defineConfig({
       PORT: envField.number({
         context: "server",
         access: "public",
-        default: 4422,
+        default: 4423,
       }),
       PUBLIC_STRAPI_URL: envField.string({
         context: "client",
