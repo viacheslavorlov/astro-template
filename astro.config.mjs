@@ -1,10 +1,10 @@
-import keystatic from "@keystatic/astro";
 import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import keystatic from "@keystatic/astro";
 import { defineConfig, envField } from "astro/config";
 import { loadEnv } from "vite";
 import removeConsole from "vite-plugin-remove-console";

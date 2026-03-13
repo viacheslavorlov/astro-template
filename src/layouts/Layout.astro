@@ -1,14 +1,14 @@
 ---
-import AstroSection from "../components/astro/Section.astro";
-import AstroContainer from "../components/astro/Container.astro";
 import DesktopMenu from "#/components/astro/DesktopMenu.astro";
 import { Seo } from "#/shared/seo";
+import AstroContainer from "../components/astro/Container.astro";
+import AstroSection from "../components/astro/Section.astro";
 import "../styles/global.css";
+import { getEntry } from "astro:content";
 import { ClientRouter } from "astro:transitions";
 // import { DesktopMenu } from "#/components/custom-react/nav-menu";
 import { menuItems } from "#/shared/const/menu";
 import type { SeoProps } from "#/shared/types";
-import { getEntry } from "astro:content";
 
 interface Props {
   title?: string;
