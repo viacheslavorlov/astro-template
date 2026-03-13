@@ -16,10 +16,11 @@ const canonicalUrl = new URL(Astro.url.pathname + Astro.url.search, baseUrl);
 
 <meta charset="utf-8" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="viewport" content="width=device-width" />
-<title>{title ? title : SITE_CONFIG.title}</title>
-<meta name="description" content={description || SITE_CONFIG.description} />
 <link rel="canonical" href={canonicalUrl} />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content={description || SITE_CONFIG.description} />
+
+<title>{title ? title : SITE_CONFIG.title}</title>
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalUrl} />
