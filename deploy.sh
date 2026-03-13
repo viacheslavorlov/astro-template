@@ -18,7 +18,7 @@ echo "📂 Changing to project directory: $PROJECT_DIR"
 cd "$PROJECT_DIR" || { echo "❌ Directory not found!"; exit 1; }
 
 # Pull latest code
-echo "📥 Pulling latest code from git..."
+echo "📥 Pulling latest code from git... ..."
 git pull
 echo "✅ Git pull completed."
 
