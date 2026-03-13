@@ -6,7 +6,7 @@
 set -e  # Exit immediately if any command fails
 
 # Configuration
-PROJECT_DIR="$HOME/vi-dev/www/astro-template"          # Adjust this path
+PROJECT_DIR="$HOME/www/astro-template"          # Adjust this path
 PM2_PROCESS_NAME="astro-template"                        # Your PM2 process name or ID
 
 echo "======================================"
